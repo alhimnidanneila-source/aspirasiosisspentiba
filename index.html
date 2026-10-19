@@ -7,43 +7,36 @@
     <meta name="description" content="Sistem Aspirasi Online OSIS SMPN 3 Bangil">
     <link rel="icon" href="https://files.catbox.moe/fyelwp.jpg" type="image/jpeg">
     <style>
-        /* Reset margin & padding agar iframe full screen */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background-color: #EFF6FF; /* Sesuai dengan warna dasar tema */
+            background-color: #EFF6FF; 
+            position: relative;
         }
+        
         #gasFrame {
+            position: absolute;
+            top: -42px; /* Trik: Menggeser iframe ke atas sejauh 42px untuk menyembunyikan banner Google */
+            left: 0;
             width: 100vw;
-            height: 100vh;
+            height: calc(100vh + 42px); /* Mengkompensasi bagian bawah agar tidak terpotong */
             border: none;
             display: block;
         }
     </style>
 </head>
 <body>
-    <!-- Iframe untuk memuat Google Apps Script (Diizinkan karena XFrameOptionsMode.ALLOWALL) -->
     <iframe id="gasFrame" allowfullscreen></iframe>
 
     <script>
-        // =========================================================================
-        // KONFIGURASI PENTING
-        // Ganti URL di bawah ini dengan URL Web App Google Apps Script kamu
-        // =========================================================================
-        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwxZnwlrCFIGg4aS-LCAnlUUR9rRAKP2o2OwxyFYpruoKbGuz338ZIaCJ-tUNIiiKeiPw/exec";
+        // GANTI DENGAN URL WEB APP KAMU YANG DIAKHIRI /exec
+        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxXB21yg1WnFJ_8RLNKmbUZxAkxFoqegNSS9eRfnb0DFiBxaBcuJMOgHaMW9Q-AP9TxHA/exec";
 
-        // Fitur Routing:
-        // Mengambil parameter dari URL Vercel (contoh: ?page=admin atau ?page=cek)
-        // dan meneruskannya ke Google Apps Script
         const currentParams = window.location.search;
-        
-        // Memuat URL ke dalam iframe
         document.getElementById('gasFrame').src = GAS_WEB_APP_URL + currentParams;
     </script>
 </body>
 </html>
-index.html
-Menampilkan index.html.

@@ -1,4 +1,4 @@
-const GAS_URL = "URL_EXEC_ANDA_YANG_BARU"; // Ganti dengan URL /exec yang disalin di langkah 2
+const GAS_URL = "https://script.google.com/macros/s/AKfycbybmsVcZ_uvs_XDw5M9aGYPXtM-UubcIKRP841eVWYI22uRIZ0Fq1rI3bh43EaoMrCsEQ/exec"; // Ganti dengan URL /exec yang disalin di langkah 2
 
 // Fungsi universal untuk memanggil backend GAS
 async function fetchGAS(actionName, payloadData = {}) {

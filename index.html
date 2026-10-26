@@ -5,79 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suara Aspirasi Spentiba</title>
     <meta name="description" content="Sistem Aspirasi Online OSIS SMPN 3 Bangil">
-    <link rel="icon" href="https://files.catbox.moe/fyelwp.jpg" type="image/jpeg">
+    <link rel="icon" href="https://files.catbox.moe/fyelwp.jpg">
     <style>
-        body, html {
+        body {
             margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
             overflow: hidden;
-            background-color: #EFF6FF; 
-            position: relative;
+            background-color: #EFF6FF;
         }
-        
-        #gasFrame {
+        iframe {
             position: absolute;
-            top: -42px; /* Trik: Menggeser iframe ke atas sejauh 42px untuk menyembunyikan banner Google */
+            top: -42px; /* Menyembunyikan banner Google */
             left: 0;
-            width: 100vw;
-            height: calc(100vh + 42px); /* Mengkompensasi bagian bawah agar tidak terpotong */
+            width: 100%;
+            height: calc(100dvh + 42px); /* dvh jauh lebih responsif di mobile */
             border: none;
-            display: block;
         }
     </style>
 </head>
 <body>
-    <iframe id="gasFrame" allowfullscreen></iframe>
+    <iframe id="app" allowfullscreen></iframe>
 
     <script>
-        // GANTI DENGAN URL WEB APP KAMU YANG DIAKHIRI /exec
-        const GAS_WEB_APP_URL = "<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suara Aspirasi Spentiba</title>
-    <meta name="description" content="Sistem Aspirasi Online OSIS SMPN 3 Bangil">
-    <link rel="icon" href="https://files.catbox.moe/fyelwp.jpg" type="image/jpeg">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #EFF6FF; 
-            position: relative;
-        }
+        const gasUrl = "https://script.google.com/macros/s/AKfycbx9FB9Qx5YAm4-CIha2cCs9HnGGKJ2ryLyOGAG4aJ7iSNOtiNia5kv-gVP9X4TuoiKg1A/exec";
         
-        #gasFrame {
-            position: absolute;
-            top: -42px; /* Trik: Menggeser iframe ke atas sejauh 42px untuk menyembunyikan banner Google */
-            left: 0;
-            width: 100vw;
-            height: calc(100vh + 42px); /* Mengkompensasi bagian bawah agar tidak terpotong */
-            border: none;
-            display: block;
-        }
-    </style>
-</head>
-<body>
-    <iframe id="gasFrame" allowfullscreen></iframe>
-
-    <script>
-        // GANTI DENGAN URL WEB APP KAMU YANG DIAKHIRI /exec
-        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycby_qiFimXWlI7KnJr6twWgbjbLGmrChlRYBO_ddqPxX30D-KJnySxhvCE9c1lb4khOt/exec";
-
-        const currentParams = window.location.search;
-        document.getElementById('gasFrame').src = GAS_WEB_APP_URL + currentParams;
-    </script>
-</body>
-</html>";
-
-        const currentParams = window.location.search;
-        document.getElementById('gasFrame').src = GAS_WEB_APP_URL + currentParams;
+        // Langsung sambungkan URL dengan parameter (seperti ?page=admin)
+        document.getElementById('app').src = gasUrl + window.location.search;
     </script>
 </body>
 </html>

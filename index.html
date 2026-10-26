@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suara Aspirasi Spentiba</title>
-    <meta name="description" content="Sistem Aspirasi Online OSIS SMPN 3 Bangil">
-    <link rel="icon" href="https://files.catbox.moe/fyelwp.jpg">
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #EFF6FF;
-        }
-        iframe {
-            position: absolute;
-            top: -42px; /* Menyembunyikan banner Google */
-            left: 0;
-            width: 100%;
-            height: calc(100dvh + 42px); /* dvh jauh lebih responsif di mobile */
-            border: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suara Aspirasi Spentiba</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Mencegah scroll ganda */
+      background: #EFF6FF;
+    }
+    .iframe-container {
+      position: absolute;
+      top: -36px; /* Menggeser iframe ke atas untuk menyembunyikan banner Google (sesuaikan piksel ini antara -36px s/d -40px) */
+      left: 0;
+      width: 100%;
+      height: calc(100% + 36px); /* Mengembalikan ketinggian yang hilang di bawah */
+    }
+    .iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
-    <iframe id="app" allowfullscreen></iframe>
 
-    <script>
-        const gasUrl = "https://script.google.com/macros/s/AKfycbx9FB9Qx5YAm4-CIha2cCs9HnGGKJ2ryLyOGAG4aJ7iSNOtiNia5kv-gVP9X4TuoiKg1A/exec";
-        
-        // Langsung sambungkan URL dengan parameter (seperti ?page=admin)
-        document.getElementById('app').src = gasUrl + window.location.search;
-    </script>
+  <div class="iframe-container">
+    <!-- Ganti URL_WEB_APP_ANDA dengan link dari hasil deploy Google Apps Script -->
+    <iframe src="https://script.google.com/macros/s/AKfycbzLA6nP2hF43Lu4dn9ZQHiU6qgwtZybBqQGsacoQ98WQ1rOgCTbWYDC67iEZA_CxPbvuQ/exec?page=admin"></iframe>
+  </div>
+
 </body>
 </html>

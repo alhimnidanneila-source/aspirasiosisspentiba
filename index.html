@@ -10,17 +10,17 @@
       padding: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden; /* Mencegah scroll ganda */
-      background: #EFF6FF;
+      overflow: hidden; /* Mencegah layar tergulung / scroll ganda */
+      background-color: #EFF6FF;
     }
-    .iframe-container {
+    .iframe-wrapper {
       position: absolute;
-      top: -36px; /* Menggeser iframe ke atas untuk menyembunyikan banner Google (sesuaikan piksel ini antara -36px s/d -40px) */
+      top: -38px; /* Memotong tepat seukuran banner Google Apps Script */
       left: 0;
       width: 100%;
-      height: calc(100% + 36px); /* Mengembalikan ketinggian yang hilang di bawah */
+      height: calc(100% + 38px);
     }
-    .iframe-container iframe {
+    iframe {
       width: 100%;
       height: 100%;
       border: none;
@@ -28,11 +28,9 @@
   </style>
 </head>
 <body>
-
-  <div class="iframe-container">
-    <!-- Ganti URL_WEB_APP_ANDA dengan link dari hasil deploy Google Apps Script -->
-    <iframe src="https://script.google.com/macros/s/AKfycbzLA6nP2hF43Lu4dn9ZQHiU6qgwtZybBqQGsacoQ98WQ1rOgCTbWYDC67iEZA_CxPbvuQ/exec"></iframe>
+  <div class="iframe-wrapper">
+    <!-- GANTI DENGAN LINK DEPLOY APPS SCRIPT ANDA -->
+    <iframe src="https://script.google.com/macros/s/AKfycbyayJONfkhBfzsAbKxws62r3tQ9ZLTyEaH3xhC30u-2-bDLg_ytLIeyNFbdcBbUsvumog/exec"></iframe>
   </div>
-
 </body>
 </html>

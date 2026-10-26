@@ -2,35 +2,2076 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Suara Aspirasi Spentiba</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Suara Aspirasi Spentiba — SMPN 3 Bangil</title>
+  <meta name="description" content="Portal Resmi Ruang Aspirasi Siswa dan Warga Sekolah SMP Negeri 3 Bangil.">
+  <meta name="theme-color" content="#1E3A8A">
+  <link rel="icon" href="https://files.catbox.moe/fyelwp.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden; /* Mencegah layar tergulung / scroll ganda */
-      background-color: #EFF6FF;
+    :root {
+      --bg-main: #F4F7FE;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F8FAFC;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --primary: #2563EB;
+      --primary-dark: #1E3A8A;
+      --primary-light: #DBEAFE;
+      --accent: #F59E0B;
+      --success: #10B981;
+      --danger: #EF4444;
+      --border: #E2E8F0;
+      --shadow-sm: 0 4px 14px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 12px 32px rgba(30, 58, 138, 0.10);
+      --shadow-lg: 0 24px 60px rgba(30, 58, 138, 0.16);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
     }
-    .iframe-wrapper {
-      position: absolute;
-      top: -38px; /* Memotong tepat seukuran banner Google Apps Script */
-      left: 0;
-      width: 100%;
-      height: calc(100% + 38px);
+
+    body.dark {
+      --bg-main: #0B1120;
+      --bg-card: #1E293B;
+      --bg-subtle: #0F172A;
+      --text-main: #F1F5F9;
+      --text-muted: #94A3B8;
+      --primary: #3B82F6;
+      --primary-dark: #93C5FD;
+      --primary-light: rgba(59, 130, 246, 0.15);
+      --border: #334155;
+      --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.25);
+      --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.55);
     }
-    iframe {
-      width: 100%;
-      height: 100%;
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      overflow-x: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
+      padding-bottom: 90px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    body.dark .navbar { background: rgba(15, 23, 42, 0.88); }
+    .nav-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .brand img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+    .brand-text .title {
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--primary-dark);
+      letter-spacing: -0.3px;
+      line-height: 1.1;
+    }
+    .brand-text .subtitle {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .nav-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-subtle);
+      padding: 5px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+    }
+    .nav-tab {
       border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-tab:hover { color: var(--text-main); }
+    .nav-tab.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+    }
+    .badge-count {
+      background: rgba(255, 255, 255, 0.22);
+      color: inherit;
+      padding: 2px 7px;
+      border-radius: 99px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .nav-tab:not(.active) .badge-count {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .nav-actions { display: flex; align-items: center; gap: 8px; }
+    .btn-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-size: 17px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+    .btn-icon:hover { transform: translateY(-2px); border-color: var(--primary); }
+
+    /* BOTTOM NAV MOBILE */
+    .bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border);
+      padding: 8px 12px 14px;
+      justify-content: space-around;
+      box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.06);
+    }
+    body.dark .bottom-nav { background: rgba(15, 23, 42, 0.95); }
+    .bnav-btn {
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 14px;
+      transition: all 0.2s;
+    }
+    .bnav-btn .ic { font-size: 19px; }
+    .bnav-btn.active {
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    @media (max-width: 768px) {
+      .nav-pills { display: none; }
+      .bottom-nav { display: flex; }
+      .navbar { padding: 14px 16px; }
+    }
+
+    /* VIEW SWITCHING */
+    .view-section { display: none; animation: fadeUp 0.35s ease; }
+    .view-section.active { display: block; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      background: linear-gradient(145deg, #0F172A 0%, #1E3A8A 45%, #2563EB 100%);
+      color: #FFFFFF;
+      padding: 48px 20px 110px;
+      overflow: hidden;
+    }
+    .hero-glow-1 {
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.35) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-glow-2 {
+      position: absolute;
+      bottom: -140px;
+      left: -100px;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.22) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-illustration-box { display: none; }
+    }
+
+    .live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      backdrop-filter: blur(8px);
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #4ADE80;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #4ADE80;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      letter-spacing: -0.8px;
+    }
+    .hero h1 span {
+      background: linear-gradient(90deg, #93C5FD, #FDE047);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p.lead {
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.86);
+      max-width: 540px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 900px) { .hero p.lead { margin-left: auto; margin-right: auto; } }
+
+    .hero-stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 480px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 900px) { .hero-stats-bar { margin-left: auto; margin-right: auto; } }
+    .hstat {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 12px 14px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+    .hstat .num { font-size: 22px; font-weight: 800; color: #FDE047; }
+    .hstat .lbl { font-size: 11px; color: rgba(255, 255, 255, 0.8); font-weight: 600; }
+
+    .clock-widget {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(15, 23, 42, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 10px 18px;
+      border-radius: 14px;
+      font-size: 13px;
+    }
+    .clock-widget .time { font-weight: 800; font-size: 16px; color: #93C5FD; font-variant-numeric: tabular-nums; }
+
+    .hero-illustration-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 28px;
+      padding: 24px;
+      backdrop-filter: blur(12px);
+    }
+    .guide-title {
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #FDE047;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .guide-steps { display: flex; flex-direction: column; gap: 12px; }
+    .gstep {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .gstep .num-circle {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #3B82F6;
+      color: #fff;
+      font-weight: 800;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      max-width: 1100px;
+      margin: -65px auto 0;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+    .container-sub {
+      max-width: 960px;
+      margin: 28px auto 0;
+      padding: 0 20px;
+    }
+
+    .home-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 920px) { .home-grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .card-header h2 { font-size: 19px; font-weight: 800; color: var(--text-main); }
+    .card-header p { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* FORM STYLING */
+    .form-group { margin-bottom: 18px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 560px) { .form-row-2 { grid-template-columns: 1fr; } }
+
+    label.field-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    input[type="text"], input[type="password"], select, textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      background: var(--bg-card);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+    textarea { min-height: 115px; resize: vertical; line-height: 1.55; }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px;
+    }
+    .cat-chip {
+      border: 2px solid var(--border);
+      background: var(--bg-subtle);
+      color: var(--text-main);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .cat-chip:hover { border-color: var(--primary); }
+    .cat-chip.selected {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .privacy-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .toggle-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+    }
+    .toggle-info .t-title { font-size: 13px; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 6px; }
+    .toggle-info .t-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .switch-input {
+      width: 44px;
+      height: 24px;
+      appearance: none;
+      background: #CBD5E1;
+      border-radius: 99px;
+      position: relative;
+      cursor: pointer;
+      transition: 0.25s;
+      flex-shrink: 0;
+    }
+    .switch-input::after {
+      content: '';
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      transition: 0.25s;
+    }
+    .switch-input:checked { background: var(--primary); }
+    .switch-input:checked::after { transform: translateX(20px); }
+
+    .btn-primary {
+      width: 100%;
+      padding: 15px 20px;
+      background: linear-gradient(135deg, #2563EB, #1D4ED8);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(37, 99, 235, 0.45); }
+    .btn-primary:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+
+    /* SIDEBAR LEADERBOARD & BRANKAS TIKET */
+    .side-stack { display: flex; flex-direction: column; gap: 20px; }
+    .lb-card {
+      background: linear-gradient(145deg, #FEF3C7, #FDE68A);
+      border: 2px solid #FCD34D;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    body.dark .lb-card {
+      background: linear-gradient(145deg, #1E293B, #0F172A);
+      border-color: #F59E0B;
+    }
+    .lb-list { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+    .lb-row {
+      background: rgba(255, 255, 255, 0.88);
+      padding: 11px 14px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    body.dark .lb-row { background: rgba(30, 41, 59, 0.9); }
+    .lb-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-weight: 800;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .lb-1 { background: #F59E0B; color: #fff; }
+    .lb-2 { background: #94A3B8; color: #fff; }
+    .lb-3 { background: #B45309; color: #fff; }
+    .lb-other { background: var(--border); color: var(--text-muted); font-size: 12px; }
+
+    .vault-list { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .vault-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .vault-item:hover { border-color: var(--primary); transform: translateX(4px); }
+    .vault-id { font-family: monospace; font-weight: 800; font-size: 13px; color: var(--primary); }
+    .vault-cat { font-size: 11px; color: var(--text-muted); }
+
+    /* DINDING PUBLIK */
+    .feed-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .pill-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill-btn {
+      padding: 8px 16px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .pill-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .feed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+    }
+    .feed-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      transition: all 0.25s;
+    }
+    .feed-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .fc-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .fc-author { display: flex; align-items: center; gap: 10px; }
+    .fc-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+      color: #fff;
+      font-weight: 800;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fc-name { font-size: 14px; font-weight: 800; color: var(--text-main); }
+    .fc-meta { font-size: 11px; color: var(--text-muted); }
+    .fc-body { font-size: 13.5px; line-height: 1.6; color: var(--text-main); white-space: pre-line; }
+    .fc-reply-preview {
+      background: var(--bg-subtle);
+      border-left: 3px solid var(--success);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .fc-reply-preview b { color: var(--success); display: block; margin-bottom: 2px; }
+    .fc-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+    }
+    .btn-upvote-chip {
+      border: 1px solid #FCD34D;
+      background: #FEF3C7;
+      color: #B45309;
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+    }
+    .btn-upvote-chip:hover, .btn-upvote-chip.voted {
+      background: #F59E0B;
+      color: #fff;
+      border-color: #F59E0B;
+    }
+
+    /* STATUS BADGES */
+    .s-badge {
+      padding: 4px 10px;
+      border-radius: 99px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .s-unread { background: #FEF3C7; color: #92400E; }
+    .s-review { background: #E0E7FF; color: #3730A3; }
+    .s-action { background: #DBEAFE; color: #1E40AF; }
+    .s-done { background: #D1FAE5; color: #065F46; }
+    .s-penting { background: #FEE2E2; color: #991B1B; }
+
+    /* STEPPER PROGRES */
+    .stepper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 20px 0;
+    }
+    .step-item {
+      text-align: center;
+      padding: 10px 6px;
+      border-radius: 12px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      opacity: 0.5;
+      transition: 0.3s;
+    }
+    .step-item.active {
+      opacity: 1;
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .step-item.done {
+      opacity: 1;
+      border-color: var(--success);
+      background: rgba(16, 185, 129, 0.12);
+    }
+    .step-item .s-ic { font-size: 18px; margin-bottom: 4px; }
+    .step-item .s-lbl { font-size: 10px; font-weight: 800; }
+
+    /* CHAT ROOM */
+    .chat-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      max-height: 360px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .bubble {
+      max-width: 82%;
+      padding: 11px 15px;
+      border-radius: 16px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .bubble .b-sender { font-size: 10px; font-weight: 800; text-transform: uppercase; margin-bottom: 3px; opacity: 0.75; }
+    .bubble .b-time { font-size: 9px; opacity: 0.65; margin-top: 4px; display: block; text-align: right; }
+    .bubble.siswa {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #2563EB, #1D4ED8);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .bubble.admin {
+      align-self: flex-start;
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      border-bottom-left-radius: 4px;
+    }
+    .chat-form { display: flex; gap: 8px; }
+    .chat-form input { flex: 1; }
+    .btn-send {
+      padding: 0 20px;
+      background: var(--success);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* ADMIN SPECIFIC */
+    .admin-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .astat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow-sm);
+    }
+    .astat-card .lbl { font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; }
+    .astat-card .val { font-size: 28px; font-weight: 800; margin-top: 6px; }
+    .charts-row {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+    @media (max-width: 800px) { .charts-row { grid-template-columns: 1fr; } }
+
+    .quick-reply-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .qr-chip {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 99px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: none;
+      cursor: pointer;
+    }
+
+    /* MODAL */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(8px);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.show { display: flex; animation: fadeUp 0.25s ease; }
+    .ticket-modal {
+      background: var(--bg-card);
+      border-radius: 28px;
+      max-width: 420px;
+      width: 100%;
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      border: 2px solid var(--primary);
+    }
+    .ticket-code-box {
+      background: var(--bg-subtle);
+      border: 2px dashed var(--primary);
+      border-radius: 16px;
+      padding: 16px;
+      margin: 18px 0;
+    }
+    .ticket-code-box .code {
+      font-family: monospace;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 95px;
+      right: 24px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      background: #0F172A;
+      box-shadow: var(--shadow-md);
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all 0.35s;
+      z-index: 2000;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { background: var(--success); }
+    .toast.error { background: var(--danger); }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px 20px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    @media print {
+      .navbar, .bottom-nav, .no-print { display: none !important; }
+      body { background: #fff; color: #000; padding: 0; }
+      .card { box-shadow: none; border: 1px solid #000; margin-bottom: 12px; }
     }
   </style>
 </head>
 <body>
-  <div class="iframe-wrapper">
-    <!-- GANTI DENGAN LINK DEPLOY APPS SCRIPT ANDA -->
-    <iframe src="https://script.google.com/macros/s/AKfycbyD0z4145GuQIhK7DDyATxTb7VkowOAtK-GQnVNT8P-USO4uYRmjWCuRomUHMWrt7tOZg/exec"></iframe>
+
+  <!-- NAVBAR ATAS -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand" onclick="switchView('home')">
+        <img src="https://files.catbox.moe/fyelwp.jpg" alt="Logo SMPN 3 Bangil">
+        <div class="brand-text">
+          <div class="title">SUARA SPENTIBA</div>
+          <div class="subtitle">Ruang Aspirasi Siswa & Warga SMPN 3 Bangil</div>
+        </div>
+      </div>
+
+      <div class="nav-pills">
+        <button class="nav-tab active" data-target="home" onclick="switchView('home')">✍️ Kirim Aspirasi</button>
+        <button class="nav-tab" data-target="feed" onclick="switchView('feed')">
+          🌐 Dinding Publik <span class="badge-count" id="navFeedCount">0</span>
+        </button>
+        <button class="nav-tab" data-target="cek" onclick="switchView('cek')">🔍 Lacak & Chat</button>
+        <button class="nav-tab" data-target="admin" onclick="switchView('admin')">🛡️ Panel OSIS/Admin</button>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn-icon" onclick="toggleDark()" id="darkBtn" title="Ubah Tema">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- BOTTOM NAV (KHUSUS MOBILE) -->
+  <nav class="bottom-nav">
+    <button class="bnav-btn active" data-target="home" onclick="switchView('home')">
+      <span class="ic">✍️</span><span>Kirim</span>
+    </button>
+    <button class="bnav-btn" data-target="feed" onclick="switchView('feed')">
+      <span class="ic">🌐</span><span>Publik</span>
+    </button>
+    <button class="bnav-btn" data-target="cek" onclick="switchView('cek')">
+      <span class="ic">🔍</span><span>Lacak</span>
+    </button>
+    <button class="bnav-btn" data-target="admin" onclick="switchView('admin')">
+      <span class="ic">🛡️</span><span>Admin</span>
+    </button>
+  </nav>
+
+  <!-- VIEW 1: BERANDA & FORM ASPIRASI -->
+  <section id="view-home" class="view-section active">
+    <div class="hero">
+      <div class="hero-glow-1"></div>
+      <div class="hero-glow-2"></div>
+      <div class="hero-inner">
+        <div>
+          <div class="live-pill">
+            <span class="live-dot"></span> PORTAL RESMI OSIS & MPK SMPN 3 BANGIL
+          </div>
+          <h1>Suaramu Hari Ini, <span>Perubahan Spentiba</span> Esok Hari!</h1>
+          <p class="lead">
+            Punya ide kreatif untuk event sekolah, saran perbaikan fasilitas, atau keluhan yang ingin disampaikan secara aman? Sampaikan langsung dan pantau tindak lanjutnya secara transparan.
+          </p>
+
+          <div class="hero-stats-bar">
+            <div class="hstat">
+              <div class="num" id="heroStatTotal">0</div>
+              <div class="lbl">Total Aspirasi</div>
+            </div>
+            <div class="hstat">
+              <div class="num" id="heroStatSelesai">0</div>
+              <div class="lbl">Sudah Dijawab</div>
+            </div>
+            <div class="hstat">
+              <div class="num" id="heroStatProses">0</div>
+              <div class="lbl">Ditindaklanjuti</div>
+            </div>
+          </div>
+
+          <div class="clock-widget">
+            <span>⏰</span>
+            <span class="time" id="clockTime">--:--:--</span>
+            <span id="clockDate">Memuat tanggal...</span>
+          </div>
+        </div>
+
+        <div class="hero-illustration-box">
+          <div class="guide-title">✨ MENGAPA LEWAT SUARA SPENTIBA?</div>
+          <div class="guide-steps">
+            <div class="gstep">
+              <div class="num-circle">1</div>
+              <div><b>Bisa Samarkan Nama (Anonim)</b><br>Identitasmu aman saat tampil di Dinding Aspirasi Publik.</div>
+            </div>
+            <div class="gstep">
+              <div class="num-circle">2</div>
+              <div><b>Mode Rahasia (Khusus Kesiswaan/BK)</b><br>Untuk laporan sensitif/bullying yang hanya dibaca tim berwenang.</div>
+            </div>
+            <div class="gstep">
+              <div class="num-circle">3</div>
+              <div><b>Obrolan 2 Arah & Tiket Otomatis</b><br>Kode tiket tersimpan otomatis di HP-mu untuk balas-balasan chat.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="home-grid">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">📣</div>
+            <div>
+              <h2>Formulir Aspirasi Warga Sekolah</h2>
+              <p>Sampaikan dengan bahasa yang santun, jelas, dan membangun.</p>
+            </div>
+          </div>
+
+          <form id="aspirasiForm" onsubmit="return handleFormSubmit(event)">
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="field-label">Nama Lengkap / Panggilan</label>
+                <input type="text" id="nama" placeholder="Contoh: Raka Pratama" required>
+              </div>
+              <div class="form-group">
+                <label class="field-label">Kelas / Peran</label>
+                <select id="kelas" required>
+                  <option value="" disabled selected>Pilih Kelas / Peran 📚</option>
+                  <optgroup label="Kelas VII">
+                    <option value="VII-A">VII-A</option><option value="VII-B">VII-B</option>
+                    <option value="VII-C">VII-C</option><option value="VII-D">VII-D</option>
+                    <option value="VII-E">VII-E</option><option value="VII-F">VII-F</option>
+                    <option value="VII-G">VII-G</option><option value="VII-H">VII-H</option>
+                  </optgroup>
+                  <optgroup label="Kelas VIII">
+                    <option value="VIII-A">VIII-A</option><option value="VIII-B">VIII-B</option>
+                    <option value="VIII-C">VIII-C</option><option value="VIII-D">VIII-D</option>
+                    <option value="VIII-E">VIII-E</option><option value="VIII-F">VIII-F</option>
+                    <option value="VIII-G">VIII-G</option><option value="VIII-H">VIII-H</option>
+                  </optgroup>
+                  <optgroup label="Kelas IX">
+                    <option value="IX-A">IX-A</option><option value="IX-B">IX-B</option>
+                    <option value="IX-C">IX-C</option><option value="IX-D">IX-D</option>
+                    <option value="IX-E">IX-E</option><option value="IX-F">IX-F</option>
+                    <option value="IX-G">IX-G</option><option value="IX-H">IX-H</option>
+                  </optgroup>
+                  <optgroup label="Warga Sekolah Lainnya">
+                    <option value="Guru">Bapak / Ibu Guru</option>
+                    <option value="Staf">Staf / Karyawan</option>
+                    <option value="Wali Murid">Wali Murid</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="field-label">Pilih Kategori Aspirasi</label>
+              <input type="hidden" id="kategori" value="Fasilitas Sekolah" required>
+              <div class="cat-grid" id="catChips">
+                <button type="button" class="cat-chip selected" onclick="selectCategory('Fasilitas Sekolah', this)">🏫 Fasilitas</button>
+                <button type="button" class="cat-chip" onclick="selectCategory('Kegiatan OSIS & Ekskul', this)">🎪 Event & Ekskul</button>
+                <button type="button" class="cat-chip" onclick="selectCategory('Akademik & Pembelajaran', this)">📖 Akademik</button>
+                <button type="button" class="cat-chip" onclick="selectCategory('Kesiswaan & Keamanan', this)">🛡️ Keamanan/BK</button>
+                <button type="button" class="cat-chip" onclick="selectCategory('Kantin & Kebersihan', this)">🌿 Lingkungan</button>
+                <button type="button" class="cat-chip" onclick="selectCategory('Lain-lain', this)">✨ Lainnya</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="field-label">
+                <span>Detail Aspirasi / Ide / Laporan</span>
+                <span id="charCount" style="color:var(--text-muted);font-weight:600;">0 / 1000</span>
+              </label>
+              <textarea id="isi" maxlength="1000" placeholder="Ceritakan detail lokasi, ide, atau saran perbaikanmu agar mudah ditindaklanjuti..." oninput="updateCharCount()" required></textarea>
+            </div>
+
+            <div class="privacy-box">
+              <label class="toggle-item">
+                <div class="toggle-info">
+                  <div class="t-title">🕵️ Samarkan Nama di Publik (Mode Anonim)</div>
+                  <div class="t-desc">Namamu akan disensor menjadi inisial (misal: R*** P***) di Dinding Publik.</div>
+                </div>
+                <input type="checkbox" id="chkAnonim" class="switch-input">
+              </label>
+              <hr style="border:none;border-top:1px dashed var(--border);">
+              <label class="toggle-item">
+                <div class="toggle-info">
+                  <div class="t-title">🔒 Laporan Rahasia (Hanya Admin/Kesiswaan)</div>
+                  <div class="t-desc">Aspirasi tidak akan ditampilkan di Dinding Publik. Cocok untuk masalah sensitif.</div>
+                </div>
+                <input type="checkbox" id="chkRahasia" class="switch-input">
+              </label>
+            </div>
+
+            <button type="submit" class="btn-primary" id="submitBtn">
+              <span>Kirim Aspirasi Sekarang</span> <span>🚀</span>
+            </button>
+          </form>
+        </div>
+
+        <div class="side-stack">
+          <div class="card">
+            <div class="card-header" style="margin-bottom:10px;">
+              <div class="card-icon" style="width:40px;height:40px;font-size:18px;">🎫</div>
+              <div>
+                <h2 style="font-size:16px;">Tiket Aspirasi Saya</h2>
+                <p>Tersimpan otomatis di perangkat ini</p>
+              </div>
+            </div>
+            <div id="myTicketsContainer" class="vault-list">
+              <div style="font-size:12px;color:var(--text-muted);text-align:center;padding:12px;">
+                Belum ada riwayat tiket di perangkat ini.
+              </div>
+            </div>
+          </div>
+
+          <div class="lb-card">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="font-size:32px;">🏆</span>
+              <div>
+                <h3 style="font-size:16px;font-weight:800;color:#92400E;">Top Kelas Teraktif</h3>
+                <p style="font-size:11px;color:#B45309;">Kelas paling peduli kemajuan Spentiba</p>
+              </div>
+            </div>
+            <div class="lb-list" id="lbList">
+              <div class="lb-row"><div class="lb-badge lb-other">...</div><div style="font-size:13px;font-weight:700;">Memuat peringkat...</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 2: DINDING ASPIRASI PUBLIK -->
+  <section id="view-feed" class="view-section">
+    <div class="container-sub">
+      <div class="card" style="margin-bottom:22px;">
+        <div class="card-header" style="margin-bottom:14px;">
+          <div class="card-icon">🌐</div>
+          <div>
+            <h2>Dinding Suara Warga Spentiba</h2>
+            <p>Dukung aspirasi temanmu dengan klik tombol <b>Setuju (🔥)</b> agar menjadi prioritas utama!</p>
+          </div>
+        </div>
+
+        <div class="feed-controls">
+          <div class="pill-filters">
+            <button class="pill-btn active" onclick="setFeedSort('populer', this)">🔥 Terpopuler</button>
+            <button class="pill-btn" onclick="setFeedSort('terbaru', this)">🕒 Terbaru</button>
+            <button class="pill-btn" onclick="setFeedSort('dijawab', this)">✅ Sudah Dijawab</button>
+          </div>
+          <input type="text" id="feedSearch" placeholder="Cari topik atau kelas..." oninput="renderPublicFeed()" style="max-width:260px;padding:9px 14px;font-size:13px;">
+        </div>
+      </div>
+
+      <div id="publicFeedGrid" class="feed-grid"></div>
+    </div>
+  </section>
+
+  <!-- VIEW 3: LACAK TIKET & OBROLAN 2 ARAH -->
+  <section id="view-cek" class="view-section">
+    <div class="container-sub" style="max-width:680px;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">🔍</div>
+          <div>
+            <h2>Lacak Status & Ruang Diskusi</h2>
+            <p>Masukkan Kode ID Tiket (contoh: <b>ASP-261026...</b>) untuk memantau progres dan membalas pesan OSIS.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-bottom:20px;">
+          <input type="text" id="inputCekId" placeholder="Ketik Kode Tiket ASP-..." style="text-transform:uppercase;font-weight:800;font-family:monospace;" onkeydown="if(event.key==='Enter') cekTiket()">
+          <button class="btn-primary" id="btnCekTiket" onclick="cekTiket()" style="width:auto;padding:0 26px;">Lacak</button>
+        </div>
+
+        <div id="hasilCekBox"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 4: PANEL ADMIN & OSIS -->
+  <section id="view-admin" class="view-section">
+    <div class="container-sub">
+      <div id="adminLoginBox" class="card" style="max-width:420px;margin:20px auto;text-align:center;">
+        <img src="https://files.catbox.moe/fyelwp.jpg" alt="Logo" style="width:72px;height:72px;border-radius:50%;margin-bottom:12px;border:2px solid var(--primary);">
+        <h2 style="font-size:20px;font-weight:800;margin-bottom:4px;">Panel Pengelola OSIS & Pembina</h2>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:20px;">Masukkan kata sandi khusus pengurus untuk mengelola aspirasi.</p>
+        <input type="password" id="adminPassInput" placeholder="Kata sandi admin..." onkeydown="if(event.key==='Enter') doAdminLogin()" style="margin-bottom:14px;text-align:center;">
+        <button class="btn-primary" id="btnAdminLogin" onclick="doAdminLogin()">🔐 Masuk Dashboard</button>
+      </div>
+
+      <div id="adminDashboardBox" style="display:none;">
+        <div class="card no-print" style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+          <div>
+            <h2 style="font-size:18px;font-weight:800;">⚙️ Pusat Kendali Aspirasi Spentiba</h2>
+            <p style="font-size:12px;color:var(--text-muted);">Kelola status tindak lanjut, balas pesan siswa, dan unduh laporan resmi.</p>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="pill-btn" onclick="loadAdminData()">🔄 Muat Ulang</button>
+            <button class="pill-btn" onclick="window.print()">🖨️ Cetak Laporan</button>
+            <button class="pill-btn" style="background:var(--success);color:#fff;border-color:var(--success);" onclick="exportCSV()">📥 Unduh CSV</button>
+            <button class="pill-btn" style="background:var(--danger);color:#fff;border-color:var(--danger);" onclick="doAdminLogout()">🚪 Keluar</button>
+          </div>
+        </div>
+
+        <div class="admin-stats-grid no-print">
+          <div class="astat-card"><div class="lbl">Total Masuk</div><div class="val" id="admTotal" style="color:var(--primary);">0</div></div>
+          <div class="astat-card"><div class="lbl">Belum Dibaca</div><div class="val" id="admUnread" style="color:var(--accent);">0</div></div>
+          <div class="astat-card"><div class="lbl">Sedang Diproses</div><div class="val" id="admProses" style="color:#6366F1;">0</div></div>
+          <div class="astat-card"><div class="lbl">Selesai / Dijawab</div><div class="val" id="admReplied" style="color:var(--success);">0</div></div>
+          <div class="astat-card"><div class="lbl">Prioritas Penting</div><div class="val" id="admPenting" style="color:var(--danger);">0</div></div>
+        </div>
+
+        <div class="charts-row no-print">
+          <div class="card">
+            <h3 style="font-size:14px;font-weight:800;margin-bottom:12px;">📊 Partisipasi Kelas</h3>
+            <div style="height:210px;"><canvas id="chartKelas"></canvas></div>
+          </div>
+          <div class="card">
+            <h3 style="font-size:14px;font-weight:800;margin-bottom:12px;">📌 Sebaran Kategori</h3>
+            <div style="height:210px;"><canvas id="chartKategori"></canvas></div>
+          </div>
+        </div>
+
+        <div class="card no-print" style="margin-bottom:18px;">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+            <button class="pill-btn active" onclick="setAdminFilter('all', this)">📋 Semua</button>
+            <button class="pill-btn" onclick="setAdminFilter('unread', this)">🔔 Belum Dibaca</button>
+            <button class="pill-btn" onclick="setAdminFilter('proses', this)">⚙️ Diproses</button>
+            <button class="pill-btn" onclick="setAdminFilter('replied', this)">✅ Selesai/Dibalas</button>
+            <button class="pill-btn" onclick="setAdminFilter('penting', this)">🚨 Penting</button>
+            <button class="pill-btn" onclick="setAdminFilter('rahasia', this)">🔒 Mode Rahasia</button>
+          </div>
+          <input type="text" id="adminSearchInput" placeholder="Cari nama, kelas, ID tiket, atau isi aspirasi..." oninput="renderAdminList()">
+        </div>
+
+        <div id="adminListContainer" style="display:flex;flex-direction:column;gap:16px;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL TIKET DIGITAL SUKSES -->
+  <div id="ticketModal" class="modal-backdrop">
+    <div class="ticket-modal">
+      <div style="font-size:46px;margin-bottom:6px;">🎉</div>
+      <h3 style="font-size:20px;font-weight:800;">Aspirasi Berhasil Terkirim!</h3>
+      <p style="font-size:12.5px;color:var(--text-muted);margin-top:4px;">
+        Tiket ini sudah otomatis disimpan di perangkatmu. Simpan juga kodenya untuk melacak balasan OSIS:
+      </p>
+      <div class="ticket-code-box">
+        <div style="font-size:10px;font-weight:800;color:var(--text-muted);margin-bottom:4px;">NOMOR TIKET RESMI</div>
+        <div class="code" id="modalTicketId">ASP-000000</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="pill-btn" style="flex:1;padding:12px;" onclick="copyTicketId()">📋 Salin ID</button>
+        <button class="btn-primary" style="flex:1;padding:12px;" onclick="openTicketFromModal()">🔍 Lacak Tiket</button>
+      </div>
+      <button onclick="closeTicketModal()" style="margin-top:12px;background:none;border:none;color:var(--text-muted);font-size:12px;font-weight:700;cursor:pointer;">Tutup Jendela</button>
+    </div>
   </div>
+
+  <div id="toast" class="toast"></div>
+
+  <footer class="footer no-print">
+    <b>Suara Aspirasi Spentiba V2.0</b> — SMP Negeri 3 Bangil<br>
+    Dikelola oleh OSIS, MPK & Tim Kesiswaan SMPN 3 Bangil 💙
+  </footer>
+
+  <script>
+    // =========================================================================
+    // KONFIGURASI URL WEB APP GOOGLE APPS SCRIPT (WAJIB DIISI UNTUK VERCEL)
+    // =========================================================================
+    const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyD0z4145GuQIhK7DDyATxTb7VkowOAtK-GQnVNT8P-USO4uYRmjWCuRomUHMWrt7tOZg/exec';
+
+    // Jembatan Hybrid: Otomatis pakai google.script.run jika dibuka di GAS,
+    // atau pakai fetch() REST API jika di-deploy di Vercel / GitHub Pages.
+    async function callBackend(action, payload = {}) {
+      if (typeof google !== 'undefined' && google.script && google.script.run) {
+        return new Promise((resolve, reject) => {
+          const runner = google.script.run
+            .withSuccessHandler(resolve)
+            .withFailureHandler(reject);
+
+          if (action === 'getPublicInitData') runner.getPublicInitData();
+          else if (action === 'submitAspirasi') runner.submitAspirasi(payload.data);
+          else if (action === 'cekBalasan') runner.cekBalasan(payload.id);
+          else if (action === 'upvoteAspirasi') runner.upvoteAspirasi(payload.id);
+          else if (action === 'kirimChat') runner.kirimChat(payload.idAspirasi, payload.pengirim, payload.pesan);
+          else if (action === 'adminLogin') runner.adminLogin(payload.password);
+          else if (action === 'getAdminDashboardData') runner.getAdminDashboardData();
+          else if (action === 'updateStatusAspirasi') runner.updateStatusAspirasi(payload.id, payload.newStatus);
+          else if (action === 'togglePenting') runner.togglePenting(payload.id);
+          else if (action === 'hapusAspirasi') runner.hapusAspirasi(payload.id);
+        });
+      }
+
+      if (!GAS_API_URL || GAS_API_URL.includes('MASUKKAN_URL')) {
+        throw new Error('URL Google Apps Script belum dipasang pada variabel GAS_API_URL.');
+      }
+
+      const response = await fetch(GAS_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ action, ...payload })
+      });
+      return await response.json();
+    }
+
+    let publicData = { stats: {}, perKelas: [], perKategori: [], publicFeed: [] };
+    let feedSort = 'populer';
+    let currentCekId = '';
+
+    let isAdminLoggedIn = false;
+    let adminData = [];
+    let adminChats = {};
+    let adminFilter = 'all';
+    let chartKelasObj = null;
+    let chartKatObj = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('spentiba_theme') === 'dark') {
+        document.body.classList.add('dark');
+        document.getElementById('darkBtn').textContent = '☀️';
+      }
+      startClock();
+      renderMyTicketsVault();
+      loadPublicInit();
+
+      // Mendukung parameter URL di Vercel: ?page=admin, ?page=cek, ?page=feed
+      const params = new URLSearchParams(window.location.search);
+      const pageParam = params.get('page');
+      const ticketParam = params.get('id');
+      if (ticketParam) {
+        document.getElementById('inputCekId').value = ticketParam;
+        switchView('cek');
+        cekTiket();
+      } else if (pageParam && ['home', 'feed', 'cek', 'admin'].includes(pageParam)) {
+        switchView(pageParam);
+      }
+    });
+
+    function switchView(viewName) {
+      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById('view-' + viewName);
+      if (target) target.classList.add('active');
+
+      document.querySelectorAll('.nav-tab, .bnav-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-target') === viewName);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleDark() {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      document.getElementById('darkBtn').textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('spentiba_theme', isDark ? 'dark' : 'light');
+    }
+
+    function showToast(msg, type = 'success') {
+      const t = document.getElementById('toast');
+      t.className = 'toast ' + type + ' show';
+      t.textContent = msg;
+      setTimeout(() => t.classList.remove('show'), 3200);
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function startClock() {
+      const update = () => {
+        const now = new Date();
+        document.getElementById('clockTime').textContent = now.toLocaleTimeString('id-ID');
+        document.getElementById('clockDate').textContent = now.toLocaleDateString('id-ID', {
+          weekday: 'short', day: 'numeric', month: 'short', year: 'numeric'
+        });
+      };
+      update();
+      setInterval(update, 1000);
+    }
+
+    async function loadPublicInit() {
+      try {
+        const res = await callBackend('getPublicInitData');
+        if (!res) return;
+        publicData = res;
+        document.getElementById('heroStatTotal').textContent = res.stats.total || 0;
+        document.getElementById('heroStatSelesai').textContent = res.stats.selesai || 0;
+        document.getElementById('heroStatProses').textContent = res.stats.diproses || 0;
+        document.getElementById('navFeedCount').textContent = (res.publicFeed || []).length;
+
+        renderLeaderboard(res.perKelas || []);
+        renderPublicFeed();
+      } catch (err) {
+        console.warn('Info Koneksi Backend:', err.message);
+      }
+    }
+
+    function renderLeaderboard(perKelas) {
+      const box = document.getElementById('lbList');
+      if (!perKelas || perKelas.length === 0) {
+        box.innerHTML = '<div style="font-size:12px;color:#92400E;padding:8px;">Belum ada data aspirasi masuk. Jadilah yang pertama!</div>';
+        return;
+      }
+      box.innerHTML = perKelas.slice(0, 5).map((item, idx) => {
+        const badgeClass = idx === 0 ? 'lb-1' : idx === 1 ? 'lb-2' : idx === 2 ? 'lb-3' : 'lb-other';
+        const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : (idx + 1);
+        return `
+          <div class="lb-row">
+            <div class="lb-badge ${badgeClass}">${medal}</div>
+            <div style="flex:1;">
+              <div style="font-weight:800;font-size:13.5px;">Kelas ${escapeHtml(item.kelas)}</div>
+              <div style="font-size:11px;color:var(--text-muted);">${item.jumlah} aspirasi terkirim</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectCategory(cat, btn) {
+      document.getElementById('kategori').value = cat;
+      document.querySelectorAll('#catChips .cat-chip').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    }
+
+    function updateCharCount() {
+      const len = document.getElementById('isi').value.length;
+      document.getElementById('charCount').textContent = len + ' / 1000';
+    }
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const payload = {
+        nama: document.getElementById('nama').value.trim(),
+        kelas: document.getElementById('kelas').value,
+        kategori: document.getElementById('kategori').value,
+        isi: document.getElementById('isi').value.trim(),
+        anonim: document.getElementById('chkAnonim').checked,
+        rahasia: document.getElementById('chkRahasia').checked
+      };
+
+      if (!payload.nama || !payload.kelas || !payload.isi) {
+        showToast('Mohon lengkapi semua kolom dulu ya!', 'error');
+        return false;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<span>Mengirim ke Server...</span> ⏳';
+
+      try {
+        const res = await callBackend('submitAspirasi', { data: payload });
+        btn.disabled = false;
+        btn.innerHTML = '<span>Kirim Aspirasi Sekarang</span> 🚀';
+
+        if (res.success) {
+          saveTicketToVault(res.id, payload.kategori);
+          document.getElementById('aspirasiForm').reset();
+          updateCharCount();
+          document.getElementById('modalTicketId').textContent = res.id;
+          document.getElementById('ticketModal').classList.add('show');
+          if (typeof confetti === 'function') {
+            confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 } });
+          }
+          loadPublicInit();
+        } else {
+          showToast(res.message || 'Gagal mengirim', 'error');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = '<span>Kirim Aspirasi Sekarang</span> 🚀';
+        showToast('Gagal: ' + err.message, 'error');
+      }
+      return false;
+    }
+
+    function getMyTickets() {
+      try { return JSON.parse(localStorage.getItem('spentiba_tickets') || '[]'); }
+      catch (e) { return []; }
+    }
+
+    function saveTicketToVault(id, kategori) {
+      const list = getMyTickets().filter(t => t.id !== id);
+      list.unshift({
+        id: id,
+        kategori: kategori,
+        waktu: new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'short' })
+      });
+      localStorage.setItem('spentiba_tickets', JSON.stringify(list.slice(0, 8)));
+      renderMyTicketsVault();
+    }
+
+    function renderMyTicketsVault() {
+      const box = document.getElementById('myTicketsContainer');
+      const list = getMyTickets();
+      if (list.length === 0) {
+        box.innerHTML = '<div style="font-size:12px;color:var(--text-muted);text-align:center;padding:12px;">Belum ada tiket tersimpan di perangkat ini.</div>';
+        return;
+      }
+      box.innerHTML = list.map(t => `
+        <div class="vault-item" onclick="quickOpenTicket('${t.id}')">
+          <div>
+            <div class="vault-id">${escapeHtml(t.id)}</div>
+            <div class="vault-cat">${escapeHtml(t.kategori)} • ${escapeHtml(t.waktu)}</div>
+          </div>
+          <span style="font-size:12px;font-weight:800;color:var(--primary);">Buka →</span>
+        </div>
+      `).join('');
+    }
+
+    function quickOpenTicket(id) {
+      document.getElementById('inputCekId').value = id;
+      switchView('cek');
+      cekTiket();
+    }
+
+    function copyTicketId() {
+      const code = document.getElementById('modalTicketId').textContent;
+      navigator.clipboard.writeText(code);
+      showToast('Kode tiket ' + code + ' berhasil disalin!');
+    }
+
+    function openTicketFromModal() {
+      const code = document.getElementById('modalTicketId').textContent;
+      closeTicketModal();
+      quickOpenTicket(code);
+    }
+
+    function closeTicketModal() {
+      document.getElementById('ticketModal').classList.remove('show');
+    }
+
+    function setFeedSort(mode, btn) {
+      feedSort = mode;
+      document.querySelectorAll('#view-feed .pill-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderPublicFeed();
+    }
+
+    function getBadgeHtml(status) {
+      if (status === 'Sudah Dibalas' || status === 'Selesai') return '<span class="s-badge s-done">✅ Dijawab</span>';
+      if (status === 'Ditindaklanjuti') return '<span class="s-badge s-action">🚀 Ditindaklanjuti</span>';
+      if (status === 'Ditinjau') return '<span class="s-badge s-review">👀 Ditinjau</span>';
+      return '<span class="s-badge s-unread">⏳ Menunggu</span>';
+    }
+
+    function renderPublicFeed() {
+      const grid = document.getElementById('publicFeedGrid');
+      const q = (document.getElementById('feedSearch').value || '').toLowerCase();
+      let items = (publicData.publicFeed || []).slice();
+
+      if (feedSort === 'populer') {
+        items.sort((a, b) => (b.upvote || 0) - (a.upvote || 0));
+      } else if (feedSort === 'dijawab') {
+        items = items.filter(i => i.status === 'Sudah Dibalas' || i.status === 'Selesai' || i.balasan);
+      }
+
+      if (q) {
+        items = items.filter(i => (i.nama + ' ' + i.kelas + ' ' + i.kategori + ' ' + i.isi).toLowerCase().includes(q));
+      }
+
+      if (items.length === 0) {
+        grid.innerHTML = '<div class="card" style="grid-column:1/-1;text-align:center;color:var(--text-muted);">Belum ada aspirasi publik yang sesuai filter.</div>';
+        return;
+      }
+
+      const votedList = JSON.parse(localStorage.getItem('spentiba_upvoted') || '[]');
+
+      grid.innerHTML = items.map(item => {
+        const hasVoted = votedList.includes(item.id);
+        const initial = item.anonim ? '🕵️' : item.nama.charAt(0).toUpperCase();
+        return `
+          <div class="feed-card">
+            <div>
+              <div class="fc-top">
+                <div class="fc-author">
+                  <div class="fc-avatar">${initial}</div>
+                  <div>
+                    <div class="fc-name">${escapeHtml(item.nama)}</div>
+                    <div class="fc-meta">Kelas ${escapeHtml(item.kelas)} • ${escapeHtml(item.timestamp)}</div>
+                  </div>
+                </div>
+                ${getBadgeHtml(item.status)}
+              </div>
+
+              <div style="margin:10px 0;">
+                <span class="s-badge" style="background:var(--primary-light);color:var(--primary);">${escapeHtml(item.kategori)}</span>
+                ${item.penting === 'Ya' ? '<span class="s-badge s-penting">🚨 Prioritas</span>' : ''}
+              </div>
+
+              <div class="fc-body">${escapeHtml(item.isi)}</div>
+
+              ${item.balasan ? `
+                <div class="fc-reply-preview" style="margin-top:12px;">
+                  <b>💬 Tanggapan OSIS / Sekolah:</b>
+                  ${escapeHtml(item.balasan)}
+                </div>
+              ` : ''}
+            </div>
+
+            <div class="fc-footer">
+              <span style="font-family:monospace;font-size:11px;color:var(--text-muted);">${escapeHtml(item.id)}</span>
+              <button class="btn-upvote-chip ${hasVoted ? 'voted' : ''}" onclick="upvoteFromFeed('${item.id}', this)">
+                🔥 Setuju (<span id="fup-${item.id}">${item.upvote || 0}</span>)
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function upvoteFromFeed(id, btn) {
+      const votedList = JSON.parse(localStorage.getItem('spentiba_upvoted') || '[]');
+      if (votedList.includes(id)) {
+        showToast('Kamu sudah mendukung aspirasi ini!', 'error');
+        return;
+      }
+      btn.disabled = true;
+      try {
+        const res = await callBackend('upvoteAspirasi', { id });
+        btn.disabled = false;
+        if (res.success) {
+          votedList.push(id);
+          localStorage.setItem('spentiba_upvoted', JSON.stringify(votedList));
+          btn.classList.add('voted');
+          const countEl = document.getElementById('fup-' + id);
+          if (countEl) countEl.textContent = res.upvote;
+          const target = (publicData.publicFeed || []).find(i => i.id === id);
+          if (target) target.upvote = res.upvote;
+          showToast('🔥 Dukungan berhasil ditambahkan!');
+        }
+      } catch (err) {
+        btn.disabled = false;
+      }
+    }
+
+    async function cekTiket() {
+      const id = document.getElementById('inputCekId').value.trim().toUpperCase();
+      const box = document.getElementById('hasilCekBox');
+      const btn = document.getElementById('btnCekTiket');
+
+      if (!id) {
+        showToast('Masukkan kode ID tiket terlebih dahulu!', 'error');
+        return;
+      }
+
+      currentCekId = id;
+      btn.disabled = true;
+      btn.textContent = 'Mencari...';
+      box.innerHTML = '<div style="text-align:center;padding:24px;color:var(--text-muted);">🔍 Sedang mencari data tiket...</div>';
+
+      try {
+        const res = await callBackend('cekBalasan', { id });
+        btn.disabled = false;
+        btn.textContent = 'Lacak';
+        if (res.success) {
+          saveTicketToVault(res.data.id, res.data.kategori);
+          renderHasilCek(res.data, res.chats || []);
+        } else {
+          box.innerHTML = `<div style="background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;padding:18px;border-radius:14px;text-align:center;font-weight:700;">😕 ${escapeHtml(res.message)}</div>`;
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Lacak';
+        showToast('Gagal memuat tiket', 'error');
+      }
+    }
+
+    function getStepIndex(status) {
+      if (status === 'Selesai' || status === 'Sudah Dibalas') return 4;
+      if (status === 'Ditindaklanjuti') return 3;
+      if (status === 'Ditinjau') return 2;
+      return 1;
+    }
+
+    function renderHasilCek(d, chats) {
+      const box = document.getElementById('hasilCekBox');
+      const stepIdx = getStepIndex(d.status);
+
+      const steps = [
+        { ic: '📥', lbl: '1. Terkirim' },
+        { ic: '👀', lbl: '2. Ditinjau' },
+        { ic: '⚙️', lbl: '3. Ditindaklanjuti' },
+        { ic: '✅', lbl: '4. Dijawab/Selesai' }
+      ];
+
+      const stepperHtml = `
+        <div class="stepper">
+          ${steps.map((s, idx) => {
+            const cls = (idx + 1) < stepIdx ? 'done' : (idx + 1) === stepIdx ? 'active' : '';
+            return `<div class="step-item ${cls}"><div class="s-ic">${s.ic}</div><div class="s-lbl">${s.lbl}</div></div>`;
+          }).join('')}
+        </div>
+      `;
+
+      let chatHtml = `
+        <div class="chat-box" id="siswaChatHist">
+          <div class="bubble siswa">
+            <div class="b-sender">Kamu (${escapeHtml(d.nama)} - ${escapeHtml(d.kelas)})</div>
+            ${escapeHtml(d.isi).replace(/\n/g, '<br>')}
+            <span class="b-time">${escapeHtml(d.timestamp)}</span>
+          </div>
+      `;
+
+      chats.forEach(c => {
+        const isAdmin = c.pengirim === 'Admin';
+        chatHtml += `
+          <div class="bubble ${isAdmin ? 'admin' : 'siswa'}">
+            <div class="b-sender">${isAdmin ? '🛡️ Tim OSIS / Sekolah' : 'Kamu'}</div>
+            ${escapeHtml(c.pesan).replace(/\n/g, '<br>')}
+            <span class="b-time">${escapeHtml(c.timestamp)}</span>
+          </div>
+        `;
+      });
+      chatHtml += '</div>';
+
+      box.innerHTML = `
+        <div style="border-top:1px solid var(--border);padding-top:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+            <div>
+              <span style="font-family:monospace;font-weight:800;font-size:15px;color:var(--primary);">${escapeHtml(d.id)}</span>
+              <span class="s-badge" style="background:var(--primary-light);color:var(--primary);margin-left:6px;">${escapeHtml(d.kategori)}</span>
+              ${d.visibilitas === 'Rahasia' ? '<span class="s-badge s-penting">🔒 Rahasia</span>' : ''}
+            </div>
+            ${getBadgeHtml(d.status)}
+          </div>
+
+          ${stepperHtml}
+
+          <h4 style="font-size:13px;font-weight:800;margin-top:10px;">💬 Ruang Obrolan Dua Arah</h4>
+          ${chatHtml}
+
+          <div class="chat-form">
+            <input type="text" id="chatInputSiswa" placeholder="Tulis balasan atau info tambahan ke OSIS..." onkeydown="if(event.key==='Enter') kirimPesanSiswa()">
+            <button class="btn-send" onclick="kirimPesanSiswa()">Kirim</button>
+          </div>
+        </div>
+      `;
+
+      const hist = document.getElementById('siswaChatHist');
+      if (hist) hist.scrollTop = hist.scrollHeight;
+    }
+
+    async function kirimPesanSiswa() {
+      const input = document.getElementById('chatInputSiswa');
+      const pesan = input.value.trim();
+      if (!pesan || !currentCekId) return;
+      input.disabled = true;
+
+      try {
+        const res = await callBackend('kirimChat', { idAspirasi: currentCekId, pengirim: 'Siswa', pesan });
+        input.disabled = false;
+        if (res.success) {
+          input.value = '';
+          cekTiket();
+          showToast('Pesan terkirim!');
+        } else {
+          showToast(res.message, 'error');
+        }
+      } catch (err) {
+        input.disabled = false;
+        showToast('Gagal mengirim pesan', 'error');
+      }
+    }
+
+    async function doAdminLogin() {
+      const pass = document.getElementById('adminPassInput').value;
+      if (!pass) return;
+      const btn = document.getElementById('btnAdminLogin');
+      btn.disabled = true;
+      btn.textContent = 'Memeriksa...';
+
+      try {
+        const res = await callBackend('adminLogin', { password: pass });
+        btn.disabled = false;
+        btn.textContent = '🔐 Masuk Dashboard';
+        if (res.success) {
+          isAdminLoggedIn = true;
+          document.getElementById('adminLoginBox').style.display = 'none';
+          document.getElementById('adminDashboardBox').style.display = 'block';
+          loadAdminData();
+        } else {
+          showToast('Password Admin salah!', 'error');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = '🔐 Masuk Dashboard';
+        showToast('Gagal terhubung ke server', 'error');
+      }
+    }
+
+    function doAdminLogout() {
+      isAdminLoggedIn = false;
+      document.getElementById('adminDashboardBox').style.display = 'none';
+      document.getElementById('adminLoginBox').style.display = 'block';
+      document.getElementById('adminPassInput').value = '';
+    }
+
+    async function loadAdminData() {
+      if (!isAdminLoggedIn) return;
+      try {
+        const res = await callBackend('getAdminDashboardData');
+        if (!res) return;
+        adminData = res.list || [];
+        adminChats = res.chats || {};
+
+        document.getElementById('admTotal').textContent = res.stats.total;
+        document.getElementById('admUnread').textContent = res.stats.belumDibaca;
+        document.getElementById('admProses').textContent = res.stats.diproses;
+        document.getElementById('admReplied').textContent = res.stats.sudahDibalas;
+        document.getElementById('admPenting').textContent = res.stats.penting;
+
+        renderAdminCharts(res.perKelas || [], res.perKategori || []);
+        renderAdminList();
+      } catch (err) {
+        showToast('Gagal memuat data admin', 'error');
+      }
+    }
+
+    function renderAdminCharts(perKelas, perKategori) {
+      const ctxK = document.getElementById('chartKelas').getContext('2d');
+      if (chartKelasObj) chartKelasObj.destroy();
+      chartKelasObj = new Chart(ctxK, {
+        type: 'bar',
+        data: {
+          labels: perKelas.map(k => k.kelas),
+          datasets: [{
+            label: 'Jumlah Aspirasi',
+            data: perKelas.map(k => k.jumlah),
+            backgroundColor: '#3B82F6',
+            borderRadius: 6
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+      });
+
+      const ctxKat = document.getElementById('chartKategori').getContext('2d');
+      if (chartKatObj) chartKatObj.destroy();
+      chartKatObj = new Chart(ctxKat, {
+        type: 'doughnut',
+        data: {
+          labels: perKategori.map(k => k.kategori),
+          datasets: [{
+            data: perKategori.map(k => k.jumlah),
+            backgroundColor: ['#2563EB', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#06B6D4']
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+    }
+
+    function setAdminFilter(f, btn) {
+      adminFilter = f;
+      document.querySelectorAll('#adminDashboardBox .pill-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderAdminList();
+    }
+
+    function renderAdminList() {
+      const box = document.getElementById('adminListContainer');
+      const q = (document.getElementById('adminSearchInput').value || '').toLowerCase();
+
+      const filtered = adminData.filter(item => {
+        if (adminFilter === 'unread' && item.status !== 'Belum Dibaca') return false;
+        if (adminFilter === 'proses' && item.status !== 'Ditinjau' && item.status !== 'Ditindaklanjuti') return false;
+        if (adminFilter === 'replied' && item.status !== 'Sudah Dibalas' && item.status !== 'Selesai') return false;
+        if (adminFilter === 'penting' && item.penting !== 'Ya') return false;
+        if (adminFilter === 'rahasia' && item.visibilitas !== 'Rahasia') return false;
+        if (q && !(item.nama + ' ' + item.kelas + ' ' + item.id + ' ' + item.isi + ' ' + item.kategori).toLowerCase().includes(q)) return false;
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        box.innerHTML = '<div class="card" style="text-align:center;color:var(--text-muted);">Tidak ada aspirasi yang cocok dengan filter ini.</div>';
+        return;
+      }
+
+      box.innerHTML = filtered.map(item => {
+        const chats = adminChats[item.id] || [];
+        const isPenting = item.penting === 'Ya';
+
+        let chatBubbles = `
+          <div class="bubble admin">
+            <div class="b-sender">Siswa: ${escapeHtml(item.nama)} (${escapeHtml(item.kelas)})</div>
+            ${escapeHtml(item.isi).replace(/\n/g, '<br>')}
+            <span class="b-time">${escapeHtml(item.timestamp)}</span>
+          </div>
+        `;
+        chats.forEach(c => {
+          const isAdm = c.pengirim === 'Admin';
+          chatBubbles += `
+            <div class="bubble ${isAdm ? 'siswa' : 'admin'}">
+              <div class="b-sender">${isAdm ? '🛡️ Admin OSIS' : 'Siswa'}</div>
+              ${escapeHtml(c.pesan).replace(/\n/g, '<br>')}
+              <span class="b-time">${escapeHtml(c.timestamp)}</span>
+            </div>
+          `;
+        });
+
+        return `
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div class="fc-avatar">${escapeHtml(item.nama.charAt(0).toUpperCase())}</div>
+                <div>
+                  <div style="font-weight:800;font-size:15px;">
+                    ${escapeHtml(item.nama)}
+                    ${item.anonim ? '<span class="s-badge s-review">🕵️ Anonim di Publik</span>' : ''}
+                    ${item.visibilitas === 'Rahasia' ? '<span class="s-badge s-penting">🔒 RAHASIA</span>' : ''}
+                  </div>
+                  <div style="font-size:12px;color:var(--text-muted);">Kelas ${escapeHtml(item.kelas)} • ${escapeHtml(item.kategori)} • 🔥 ${item.upvote} dukungan</div>
+                </div>
+              </div>
+
+              <div style="text-align:right;">
+                ${getBadgeHtml(item.status)}
+                ${isPenting ? '<span class="s-badge s-penting">🚨 PENTING</span>' : ''}
+                <div style="font-family:monospace;font-size:11px;color:var(--text-muted);margin-top:4px;">${escapeHtml(item.id)}</div>
+              </div>
+            </div>
+
+            <div class="chat-box" style="max-height:260px;">${chatBubbles}</div>
+
+            <div class="no-print">
+              <div class="quick-reply-chips">
+                <button class="qr-chip" onclick="fillTemplate('${item.id}', 'Terima kasih atas aspirasinya! Tim OSIS akan segera meninjau dan meneruskan ke pihak sekolah.')">👍 Terima & Tinjau</button>
+                <button class="qr-chip" onclick="fillTemplate('${item.id}', 'Laporan fasilitas sudah kami teruskan ke bagian Sarpras untuk segera diperbaiki.')">🔧 Teruskan Sarpras</button>
+                <button class="qr-chip" onclick="fillTemplate('${item.id}', 'Ide kegiatan sangat menarik! Akan kami bahas di rapat program kerja OSIS berikutnya.')">🎪 Tampung Ide Event</button>
+              </div>
+
+              <div class="chat-form" style="margin-bottom:12px;">
+                <input type="text" id="admChatIn-${item.id}" placeholder="Ketik balasan resmi Admin/OSIS..." onkeydown="if(event.key==='Enter') kirimPesanAdmin('${item.id}')">
+                <button class="btn-send" onclick="kirimPesanAdmin('${item.id}')">Kirim Balasan</button>
+              </div>
+
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding-top:10px;border-top:1px dashed var(--border);">
+                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                  <span style="font-size:11px;font-weight:800;color:var(--text-muted);">Ubah Progres:</span>
+                  <select onchange="ubahStatus('${item.id}', this.value)" style="width:auto;padding:6px 12px;font-size:12px;font-weight:700;">
+                    <option value="Belum Dibaca" ${item.status === 'Belum Dibaca' ? 'selected' : ''}>⏳ Belum Dibaca</option>
+                    <option value="Ditinjau" ${item.status === 'Ditinjau' ? 'selected' : ''}>👀 Ditinjau</option>
+                    <option value="Ditindaklanjuti" ${item.status === 'Ditindaklanjuti' ? 'selected' : ''}>🚀 Ditindaklanjuti</option>
+                    <option value="Sudah Dibalas" ${item.status === 'Sudah Dibalas' ? 'selected' : ''}>✅ Sudah Dibalas / Selesai</option>
+                  </select>
+                </div>
+
+                <div style="display:flex;gap:8px;">
+                  <button class="pill-btn" onclick="togglePentingAdmin('${item.id}')">
+                    ${isPenting ? '⭐ Hapus Penting' : '🚨 Tandai Penting'}
+                  </button>
+                  <button class="pill-btn" style="color:var(--danger);border-color:var(--danger);" onclick="hapusDataAdmin('${item.id}', '${escapeHtml(item.nama)}')">
+                    🗑️ Hapus
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function fillTemplate(id, text) {
+      const el = document.getElementById('admChatIn-' + id);
+      if (el) { el.value = text; el.focus(); }
+    }
+
+    async function kirimPesanAdmin(id) {
+      const input = document.getElementById('admChatIn-' + id);
+      const pesan = input.value.trim();
+      if (!pesan) return;
+      input.disabled = true;
+
+      try {
+        const res = await callBackend('kirimChat', { idAspirasi: id, pengirim: 'Admin', pesan });
+        input.disabled = false;
+        if (res.success) {
+          showToast('Balasan Admin terkirim!');
+          loadAdminData();
+          loadPublicInit();
+        } else {
+          showToast(res.message, 'error');
+        }
+      } catch (err) {
+        input.disabled = false;
+      }
+    }
+
+    async function ubahStatus(id, statusBaru) {
+      const res = await callBackend('updateStatusAspirasi', { id, newStatus: statusBaru });
+      if (res.success) {
+        showToast(res.message);
+        loadAdminData();
+        loadPublicInit();
+      } else {
+        showToast(res.message, 'error');
+      }
+    }
+
+    async function togglePentingAdmin(id) {
+      const res = await callBackend('togglePenting', { id });
+      if (res.success) {
+        showToast(res.message);
+        loadAdminData();
+        loadPublicInit();
+      }
+    }
+
+    async function hapusDataAdmin(id, nama) {
+      if (!confirm('Hapus permanen aspirasi dari "' + nama + '"?')) return;
+      const res = await callBackend('hapusAspirasi', { id });
+      if (res.success) {
+        showToast('Aspirasi dihapus!');
+        loadAdminData();
+        loadPublicInit();
+      }
+    }
+
+    function exportCSV() {
+      if (!adminData || adminData.length === 0) {
+        showToast('Tidak ada data untuk diekspor', 'error');
+        return;
+      }
+      let csv = 'ID,Waktu,Nama,Kelas,Kategori,Visibilitas,Anonim,Isi Aspirasi,Status,Riwayat Chat,Penting,Upvote\n';
+      adminData.forEach(row => {
+        const cleanIsi = (row.isi || '').replace(/"/g, '""').replace(/\n/g, ' ');
+        let chatStr = '';
+        if (adminChats[row.id]) {
+          chatStr = adminChats[row.id].map(c => `[${c.pengirim}] ${c.pesan}`).join(' | ').replace(/"/g, '""').replace(/\n/g, ' ');
+        }
+        csv += [
+          row.id,
+          row.timestamp,
+          `"${row.nama}"`,
+          row.kelas,
+          row.kategori,
+          row.visibilitas,
+          row.anonim ? 'Ya' : 'Tidak',
+          `"${cleanIsi}"`,
+          row.status,
+          `"${chatStr}"`,
+          row.penting,
+          row.upvote
+        ].join(',') + '\n';
+      });
+
+      const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'Rekap_Aspirasi_Spentiba_V2.csv';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('File CSV berhasil diunduh!');
+    }
+  </script>
 </body>
 </html>

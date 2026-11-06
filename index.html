@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Suara Aspirasi Spentiba — SMPN 3 Bangil</title>
-  <meta name="description" content="Portal Resmi Ruang Aspirasi Siswa dan Warga Sekolah SMP Negeri 3 Bangil.">
+  <title>Suara Aspirasi Spentiba V3.0 — SMPN 3 Bangil</title>
+  <meta name="description" content="Pusat Pengumpulan Aspirasi Siswa dan Warga Sekolah SMP Negeri 3 Bangil Berbasis Privasi & Kurasi Terpadu.">
   <meta name="theme-color" content="#1E3A8A">
   <link rel="icon" href="https://files.catbox.moe/fyelwp.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -54,7 +54,7 @@
       color: var(--text-main);
       overflow-x: hidden;
       transition: background 0.3s ease, color 0.3s ease;
-      padding-bottom: 90px;
+      padding-bottom: 95px;
     }
 
     /* NAVBAR */
@@ -62,14 +62,14 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.90);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       padding: 16px 24px;
       border-bottom: 1px solid var(--border);
       transition: all 0.3s ease;
     }
-    body.dark .navbar { background: rgba(15, 23, 42, 0.88); }
+    body.dark .navbar { background: rgba(15, 23, 42, 0.90); }
     .nav-container {
       max-width: 1140px;
       margin: 0 auto;
@@ -86,8 +86,8 @@
       text-decoration: none;
     }
     .brand img {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--primary);
@@ -98,7 +98,7 @@
       font-size: 16px;
       color: var(--primary-dark);
       letter-spacing: -0.3px;
-      line-height: 1.1;
+      line-height: 1.15;
     }
     .brand-text .subtitle {
       font-size: 11px;
@@ -122,26 +122,26 @@
       font-family: inherit;
       font-size: 13px;
       font-weight: 700;
-      padding: 8px 16px;
+      padding: 9px 18px;
       border-radius: 99px;
       cursor: pointer;
       transition: all 0.25s ease;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
     }
     .nav-tab:hover { color: var(--text-main); }
     .nav-tab.active {
       background: var(--primary);
       color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
     }
     .badge-count {
-      background: rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.24);
       color: inherit;
-      padding: 2px 7px;
+      padding: 2px 8px;
       border-radius: 99px;
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 800;
     }
     .nav-tab:not(.active) .badge-count {
@@ -174,14 +174,14 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(16px);
       border-top: 1px solid var(--border);
       padding: 8px 12px 14px;
       justify-content: space-around;
       box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.06);
     }
-    body.dark .bottom-nav { background: rgba(15, 23, 42, 0.95); }
+    body.dark .bottom-nav { background: rgba(15, 23, 42, 0.96); }
     .bnav-btn {
       border: none;
       background: none;
@@ -285,7 +285,7 @@
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
     .hero h1 {
-      font-size: clamp(28px, 4vw, 44px);
+      font-size: clamp(28px, 4vw, 42px);
       font-weight: 800;
       line-height: 1.15;
       margin-bottom: 14px;
@@ -297,9 +297,9 @@
       -webkit-text-fill-color: transparent;
     }
     .hero p.lead {
-      font-size: 15px;
+      font-size: 14.5px;
       line-height: 1.65;
-      color: rgba(255, 255, 255, 0.86);
+      color: rgba(255, 255, 255, 0.88);
       max-width: 540px;
       margin-bottom: 24px;
     }
@@ -385,7 +385,7 @@
       z-index: 10;
     }
     .container-sub {
-      max-width: 960px;
+      max-width: 980px;
       margin: 28px auto 0;
       padding: 0 20px;
     }
@@ -435,6 +435,7 @@
     label.field-label {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       font-size: 12px;
       font-weight: 800;
       color: var(--primary-dark);
@@ -442,7 +443,7 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-    input[type="text"], input[type="password"], select, textarea {
+    input[type="text"], input[type="url"], input[type="password"], select, textarea {
       width: 100%;
       padding: 13px 16px;
       border: 2px solid var(--border);
@@ -461,6 +462,27 @@
       box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
     }
     textarea { min-height: 115px; resize: vertical; line-height: 1.55; }
+
+    .btn-voice {
+      border: 1px solid var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      text-transform: none;
+    }
+    .btn-voice.recording {
+      background: var(--danger);
+      color: #fff;
+      border-color: var(--danger);
+      animation: pulse 1s infinite;
+    }
 
     .cat-grid {
       display: grid;
@@ -609,14 +631,55 @@
     .vault-id { font-family: monospace; font-weight: 800; font-size: 13px; color: var(--primary); }
     .vault-cat { font-size: 11px; color: var(--text-muted); }
 
-    /* DINDING PUBLIK */
+    /* DINDING PUBLIK & EFEK BLUR PRIVASI RESPONDEN */
+    .privacy-shield-banner {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(16, 185, 129, 0.08));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 12px 16px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-main);
+    }
+    .blurred-text {
+      filter: blur(3.5px);
+      user-select: none;
+      -webkit-user-select: none;
+      pointer-events: none;
+      background: var(--bg-subtle);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-family: monospace;
+      letter-spacing: 1px;
+    }
+    .masked-code-pill {
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      border: 1px dashed var(--border);
+      padding: 4px 10px;
+      border-radius: 99px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+    }
+    .masked-code-pill .dots {
+      filter: blur(2.8px);
+    }
+
     .feed-controls {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     .pill-filters { display: flex; gap: 8px; flex-wrap: wrap; }
     .pill-btn {
@@ -639,7 +702,7 @@
 
     .feed-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
       gap: 18px;
     }
     .feed-card {
@@ -669,18 +732,27 @@
       align-items: center;
       justify-content: center;
     }
-    .fc-name { font-size: 14px; font-weight: 800; color: var(--text-main); }
+    .fc-name { font-size: 13.5px; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
     .fc-meta { font-size: 11px; color: var(--text-muted); }
     .fc-body { font-size: 13.5px; line-height: 1.6; color: var(--text-main); white-space: pre-line; }
     .fc-reply-preview {
       background: var(--bg-subtle);
-      border-left: 3px solid var(--success);
+      border-left: 3px solid var(--primary);
       padding: 10px 12px;
       border-radius: 8px;
       font-size: 12px;
       color: var(--text-muted);
     }
-    .fc-reply-preview b { color: var(--success); display: block; margin-bottom: 2px; }
+    .fc-reply-preview b { color: var(--primary); display: block; margin-bottom: 2px; }
+    .fc-realisasi-box {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      color: var(--text-main);
+    }
+    .fc-realisasi-box b { color: var(--success); display: block; margin-bottom: 2px; }
     .fc-footer {
       display: flex;
       justify-content: space-between;
@@ -726,6 +798,8 @@
     .s-action { background: #DBEAFE; color: #1E40AF; }
     .s-done { background: #D1FAE5; color: #065F46; }
     .s-penting { background: #FEE2E2; color: #991B1B; }
+    .s-internal { background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; }
+    .s-public { background: #DCFCE7; color: #15803D; border: 1px solid #86EFAC; }
 
     /* STEPPER PROGRES */
     .stepper {
@@ -807,19 +881,19 @@
     /* ADMIN SPECIFIC */
     .admin-stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 12px;
       margin-bottom: 22px;
     }
     .astat-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 18px;
+      padding: 16px;
       box-shadow: var(--shadow-sm);
     }
-    .astat-card .lbl { font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; }
-    .astat-card .val { font-size: 28px; font-weight: 800; margin-top: 6px; }
+    .astat-card .lbl { font-size: 10.5px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; }
+    .astat-card .val { font-size: 26px; font-weight: 800; margin-top: 6px; }
     .charts-row {
       display: grid;
       grid-template-columns: 1.3fr 0.7fr;
@@ -843,6 +917,42 @@
       color: var(--primary);
       border: none;
       cursor: pointer;
+    }
+
+    .pub-control-bar {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .btn-pub-toggle {
+      padding: 8px 16px;
+      border-radius: 99px;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      transition: 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-pub-toggle.keep-internal {
+      background: #DCFCE7;
+      color: #166534;
+      border: 1px solid #86EFAC;
+    }
+    .btn-pub-toggle.unpublish {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
     }
 
     /* MODAL */
@@ -962,7 +1072,9 @@
     </button>
   </nav>
 
-  <!-- VIEW 1: BERANDA & FORM ASPIRASI -->
+  <!-- =======================================================
+       VIEW 1: BERANDA & FORM ASPIRASI
+       ======================================================= -->
   <section id="view-home" class="view-section active">
     <div class="hero">
       <div class="hero-glow-1"></div>
@@ -970,25 +1082,25 @@
       <div class="hero-inner">
         <div>
           <div class="live-pill">
-            <span class="live-dot"></span> PORTAL RESMI OSIS & MPK SMPN 3 BANGIL
+            <span class="live-dot"></span> SISTEM PRIVASI BERLAPIS — SMPN 3 BANGIL
           </div>
-          <h1>Suaramu Hari Ini, <span>Perubahan Spentiba</span> Esok Hari!</h1>
+          <h1>Ruang Aman Bersuara, <span>Wujudkan Spentiba</span> Lebih Maju!</h1>
           <p class="lead">
-            Punya ide kreatif untuk event sekolah, saran perbaikan fasilitas, atau keluhan yang ingin disampaikan secara aman? Sampaikan langsung dan pantau tindak lanjutnya secara transparan.
+            Seluruh aspirasi yang kamu kirim maupun yang sudah dijawab Admin <b>otomatis tersimpan di Ruang Internal Sekolah</b>. Hanya aspirasi terpilih yang ditayangkan ke Dinding Publik dengan <b>nama & kode tiket yang diblur otomatis</b>.
           </p>
 
           <div class="hero-stats-bar">
             <div class="hstat">
               <div class="num" id="heroStatTotal">0</div>
-              <div class="lbl">Total Aspirasi</div>
+              <div class="lbl">Aspirasi Masuk</div>
             </div>
             <div class="hstat">
               <div class="num" id="heroStatSelesai">0</div>
-              <div class="lbl">Sudah Dijawab</div>
+              <div class="lbl">Telah Dijawab</div>
             </div>
             <div class="hstat">
-              <div class="num" id="heroStatProses">0</div>
-              <div class="lbl">Ditindaklanjuti</div>
+              <div class="num" id="heroStatPublik">0</div>
+              <div class="lbl">Tayang di Publik</div>
             </div>
           </div>
 
@@ -1000,19 +1112,19 @@
         </div>
 
         <div class="hero-illustration-box">
-          <div class="guide-title">✨ MENGAPA LEWAT SUARA SPENTIBA?</div>
+          <div class="guide-title">🛡️ JAMINAN KEAMANAN DATA RESPONDEN</div>
           <div class="guide-steps">
             <div class="gstep">
               <div class="num-circle">1</div>
-              <div><b>Bisa Samarkan Nama (Anonim)</b><br>Identitasmu aman saat tampil di Dinding Aspirasi Publik.</div>
+              <div><b>100% Masuk Internal Lebih Dulu</b><br>Pertanyaan yang baru dikirim maupun yang sudah dijawab Admin tidak akan bocor ke publik tanpa izin kurasi Admin.</div>
             </div>
             <div class="gstep">
               <div class="num-circle">2</div>
-              <div><b>Mode Rahasia (Khusus Kesiswaan/BK)</b><br>Untuk laporan sensitif/bullying yang hanya dibaca tim berwenang.</div>
+              <div><b>Nama & Kode Tiket Diblur Otomatis</b><br>Di Dinding Publik, nama dan kode tiket responden disamarkan agar tidak bisa dibuka orang lain.</div>
             </div>
             <div class="gstep">
               <div class="num-circle">3</div>
-              <div><b>Obrolan 2 Arah & Tiket Otomatis</b><br>Kode tiket tersimpan otomatis di HP-mu untuk balas-balasan chat.</div>
+              <div><b>Dikte Suara & Lampiran Bukti</b><br>Malas mengetik panjang? Gunakan tombol mikrofon atau lampirkan link foto bukti.</div>
             </div>
           </div>
         </div>
@@ -1025,8 +1137,8 @@
           <div class="card-header">
             <div class="card-icon">📣</div>
             <div>
-              <h2>Formulir Aspirasi Warga Sekolah</h2>
-              <p>Sampaikan dengan bahasa yang santun, jelas, dan membangun.</p>
+              <h2>Formulir Aspirasi Siswa & Warga Sekolah</h2>
+              <p>Data identitasmu terlindungi di server internal SMPN 3 Bangil.</p>
             </div>
           </div>
 
@@ -1083,42 +1195,54 @@
             <div class="form-group">
               <label class="field-label">
                 <span>Detail Aspirasi / Ide / Laporan</span>
-                <span id="charCount" style="color:var(--text-muted);font-weight:600;">0 / 1000</span>
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <button type="button" class="btn-voice" id="btnVoice" onclick="toggleVoiceInput()">🎙️ Dikte Suara</button>
+                  <span id="charCount" style="color:var(--text-muted);font-weight:600;">0 / 1000</span>
+                </div>
               </label>
-              <textarea id="isi" maxlength="1000" placeholder="Ceritakan detail lokasi, ide, atau saran perbaikanmu agar mudah ditindaklanjuti..." oninput="updateCharCount()" required></textarea>
+              <textarea id="isi" maxlength="1000" placeholder="Ceritakan detail lokasi, ide, atau saran perbaikanmu dengan jelas..." oninput="updateCharCount()" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="field-label">
+                <span>Tautan Foto / Bukti Pendukung (Opsional)</span>
+                <span style="font-size:10px;color:var(--text-muted);text-transform:none;">Link Google Drive / Foto</span>
+              </label>
+              <input type="url" id="linkBukti" placeholder="https://drive.google.com/... (Kosongkan jika tidak ada)">
             </div>
 
             <div class="privacy-box">
               <label class="toggle-item">
                 <div class="toggle-info">
-                  <div class="t-title">🕵️ Samarkan Nama di Publik (Mode Anonim)</div>
-                  <div class="t-desc">Namamu akan disensor menjadi inisial (misal: R*** P***) di Dinding Publik.</div>
+                  <div class="t-title">🕵️ Mode Privasi Penuh (Samarkan Identitas)</div>
+                  <div class="t-desc">Nama dan Kode Aspirasi akan disensor/diblur otomatis jika dimuat di Dinding Publik.</div>
                 </div>
-                <input type="checkbox" id="chkAnonim" class="switch-input">
+                <input type="checkbox" id="chkAnonim" class="switch-input" checked>
               </label>
               <hr style="border:none;border-top:1px dashed var(--border);">
               <label class="toggle-item">
                 <div class="toggle-info">
-                  <div class="t-title">🔒 Laporan Rahasia (Hanya Admin/Kesiswaan)</div>
-                  <div class="t-desc">Aspirasi tidak akan ditampilkan di Dinding Publik. Cocok untuk masalah sensitif.</div>
+                  <div class="t-title">🔒 Kunci Permanen di Internal (Khusus BK / Kesiswaan)</div>
+                  <div class="t-desc">Mengunci sistem agar aspirasi ini tidak akan pernah bisa ditayangkan ke Dinding Publik.</div>
                 </div>
                 <input type="checkbox" id="chkRahasia" class="switch-input">
               </label>
             </div>
 
             <button type="submit" class="btn-primary" id="submitBtn">
-              <span>Kirim Aspirasi Sekarang</span> <span>🚀</span>
+              <span>Kirim Aspirasi Secara Aman</span> <span>🚀</span>
             </button>
           </form>
         </div>
 
+        <!-- SIDEBAR -->
         <div class="side-stack">
           <div class="card">
             <div class="card-header" style="margin-bottom:10px;">
               <div class="card-icon" style="width:40px;height:40px;font-size:18px;">🎫</div>
               <div>
-                <h2 style="font-size:16px;">Tiket Aspirasi Saya</h2>
-                <p>Tersimpan otomatis di perangkat ini</p>
+                <h2 style="font-size:16px;">Brankas Tiket Saya</h2>
+                <p>Hanya tersimpan di browser perangkatmu</p>
               </div>
             </div>
             <div id="myTicketsContainer" class="vault-list">
@@ -1145,15 +1269,24 @@
     </div>
   </section>
 
-  <!-- VIEW 2: DINDING ASPIRASI PUBLIK -->
+  <!-- =======================================================
+       VIEW 2: DINDING ASPIRASI PUBLIK (TERKURASI & TERBLUR)
+       ======================================================= -->
   <section id="view-feed" class="view-section">
     <div class="container-sub">
       <div class="card" style="margin-bottom:22px;">
-        <div class="card-header" style="margin-bottom:14px;">
+        <div class="card-header" style="margin-bottom:12px;">
           <div class="card-icon">🌐</div>
           <div>
             <h2>Dinding Suara Warga Spentiba</h2>
             <p>Dukung aspirasi temanmu dengan klik tombol <b>Setuju (🔥)</b> agar menjadi prioritas utama!</p>
+          </div>
+        </div>
+
+        <div class="privacy-shield-banner">
+          <span style="font-size:22px;">🛡️</span>
+          <div>
+            <b>Perlindungan Privasi Responden Aktif:</b> Nama pengirim dan Kode Aspirasi (`ASP-••••`) pada dinding publik ini otomatis diblur untuk menjaga kerahasiaan data siswa & warga sekolah.
           </div>
         </div>
 
@@ -1171,21 +1304,23 @@
     </div>
   </section>
 
-  <!-- VIEW 3: LACAK TIKET & OBROLAN 2 ARAH -->
+  <!-- =======================================================
+       VIEW 3: LACAK TIKET PRIVAT & OBROLAN 2 ARAH
+       ======================================================= -->
   <section id="view-cek" class="view-section">
     <div class="container-sub" style="max-width:680px;">
       <div class="card">
         <div class="card-header">
           <div class="card-icon">🔍</div>
           <div>
-            <h2>Lacak Status & Ruang Diskusi</h2>
-            <p>Masukkan Kode ID Tiket (contoh: <b>ASP-261026...</b>) untuk memantau progres dan membalas pesan OSIS.</p>
+            <h2>Ruang Lacak & Diskusi Privat</h2>
+            <p>Masukkan <b>Kode Tiket Rahasia (ASP-...)</b> milikmu untuk membaca jawaban Admin dan berdiskusi secara privat.</p>
           </div>
         </div>
 
         <div style="display:flex;gap:10px;margin-bottom:20px;">
-          <input type="text" id="inputCekId" placeholder="Ketik Kode Tiket ASP-..." style="text-transform:uppercase;font-weight:800;font-family:monospace;" onkeydown="if(event.key==='Enter') cekTiket()">
-          <button class="btn-primary" id="btnCekTiket" onclick="cekTiket()" style="width:auto;padding:0 26px;">Lacak</button>
+          <input type="text" id="inputCekId" placeholder="Ketik Kode Lengkap ASP-..." style="text-transform:uppercase;font-weight:800;font-family:monospace;" onkeydown="if(event.key==='Enter') cekTiket()">
+          <button class="btn-primary" id="btnCekTiket" onclick="cekTiket()" style="width:auto;padding:0 26px;">Buka Tiket</button>
         </div>
 
         <div id="hasilCekBox"></div>
@@ -1193,60 +1328,62 @@
     </div>
   </section>
 
-  <!-- VIEW 4: PANEL ADMIN & OSIS -->
+  <!-- =======================================================
+       VIEW 4: PANEL ADMIN & KONTROL VISIBILITAS PENUH
+       ======================================================= -->
   <section id="view-admin" class="view-section">
     <div class="container-sub">
       <div id="adminLoginBox" class="card" style="max-width:420px;margin:20px auto;text-align:center;">
         <img src="https://files.catbox.moe/fyelwp.jpg" alt="Logo" style="width:72px;height:72px;border-radius:50%;margin-bottom:12px;border:2px solid var(--primary);">
-        <h2 style="font-size:20px;font-weight:800;margin-bottom:4px;">Panel Pengelola OSIS & Pembina</h2>
-        <p style="font-size:12px;color:var(--text-muted);margin-bottom:20px;">Masukkan kata sandi khusus pengurus untuk mengelola aspirasi.</p>
+        <h2 style="font-size:20px;font-weight:800;margin-bottom:4px;">Otoritas Admin & Kurator Spentiba</h2>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:20px;">Kendalikan penuh aspirasi internal dan kurasi penayangan dinding publik.</p>
         <input type="password" id="adminPassInput" placeholder="Kata sandi admin..." onkeydown="if(event.key==='Enter') doAdminLogin()" style="margin-bottom:14px;text-align:center;">
-        <button class="btn-primary" id="btnAdminLogin" onclick="doAdminLogin()">🔐 Masuk Dashboard</button>
+        <button class="btn-primary" id="btnAdminLogin" onclick="doAdminLogin()">🔐 Masuk Pusat Kendali</button>
       </div>
 
       <div id="adminDashboardBox" style="display:none;">
         <div class="card no-print" style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
           <div>
-            <h2 style="font-size:18px;font-weight:800;">⚙️ Pusat Kendali Aspirasi Spentiba</h2>
-            <p style="font-size:12px;color:var(--text-muted);">Kelola status tindak lanjut, balas pesan siswa, dan unduh laporan resmi.</p>
+            <h2 style="font-size:18px;font-weight:800;">⚙️ Pusat Kurasi & Manajemen Aspirasi SMPN 3 Bangil</h2>
+            <p style="font-size:12px;color:var(--text-muted);">Pertanyaan yang telah dijawab <b>tidak langsung muncul di Dinding Publik</b> sampai Anda menekan tombol <b>Tayangkan ke Publik</b>.</p>
           </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <button class="pill-btn" onclick="loadAdminData()">🔄 Muat Ulang</button>
-            <button class="pill-btn" onclick="window.print()">🖨️ Cetak Laporan</button>
-            <button class="pill-btn" style="background:var(--success);color:#fff;border-color:var(--success);" onclick="exportCSV()">📥 Unduh CSV</button>
+            <button class="pill-btn" onclick="loadAdminData()">🔄 Segarkan</button>
+            <button class="pill-btn" onclick="window.print()">🖨️ Cetak</button>
+            <button class="pill-btn" style="background:var(--success);color:#fff;border-color:var(--success);" onclick="exportCSV()">📥 Ekspor CSV</button>
             <button class="pill-btn" style="background:var(--danger);color:#fff;border-color:var(--danger);" onclick="doAdminLogout()">🚪 Keluar</button>
           </div>
         </div>
 
         <div class="admin-stats-grid no-print">
-          <div class="astat-card"><div class="lbl">Total Masuk</div><div class="val" id="admTotal" style="color:var(--primary);">0</div></div>
+          <div class="astat-card"><div class="lbl">Total Aspirasi</div><div class="val" id="admTotal" style="color:var(--primary);">0</div></div>
           <div class="astat-card"><div class="lbl">Belum Dibaca</div><div class="val" id="admUnread" style="color:var(--accent);">0</div></div>
-          <div class="astat-card"><div class="lbl">Sedang Diproses</div><div class="val" id="admProses" style="color:#6366F1;">0</div></div>
-          <div class="astat-card"><div class="lbl">Selesai / Dijawab</div><div class="val" id="admReplied" style="color:var(--success);">0</div></div>
-          <div class="astat-card"><div class="lbl">Prioritas Penting</div><div class="val" id="admPenting" style="color:var(--danger);">0</div></div>
+          <div class="astat-card"><div class="lbl">Sudah Dijawab</div><div class="val" id="admReplied" style="color:var(--success);">0</div></div>
+          <div class="astat-card"><div class="lbl">🔒 Disimpan Internal</div><div class="val" id="admInternal" style="color:#475569;">0</div></div>
+          <div class="astat-card"><div class="lbl">🌐 Tayang di Publik</div><div class="val" id="admPublik" style="color:#10B981;">0</div></div>
         </div>
 
         <div class="charts-row no-print">
           <div class="card">
-            <h3 style="font-size:14px;font-weight:800;margin-bottom:12px;">📊 Partisipasi Kelas</h3>
+            <h3 style="font-size:14px;font-weight:800;margin-bottom:12px;">📊 Partisipasi per Kelas</h3>
             <div style="height:210px;"><canvas id="chartKelas"></canvas></div>
           </div>
           <div class="card">
-            <h3 style="font-size:14px;font-weight:800;margin-bottom:12px;">📌 Sebaran Kategori</h3>
+            <h3 style="font-size:14px;font-weight:800;margin-bottom:12px;">📌 Distribusi Kategori</h3>
             <div style="height:210px;"><canvas id="chartKategori"></canvas></div>
           </div>
         </div>
 
         <div class="card no-print" style="margin-bottom:18px;">
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
-            <button class="pill-btn active" onclick="setAdminFilter('all', this)">📋 Semua</button>
+            <button class="pill-btn active" onclick="setAdminFilter('all', this)">📋 Semua Data</button>
             <button class="pill-btn" onclick="setAdminFilter('unread', this)">🔔 Belum Dibaca</button>
-            <button class="pill-btn" onclick="setAdminFilter('proses', this)">⚙️ Diproses</button>
-            <button class="pill-btn" onclick="setAdminFilter('replied', this)">✅ Selesai/Dibalas</button>
-            <button class="pill-btn" onclick="setAdminFilter('penting', this)">🚨 Penting</button>
-            <button class="pill-btn" onclick="setAdminFilter('rahasia', this)">🔒 Mode Rahasia</button>
+            <button class="pill-btn" onclick="setAdminFilter('internal', this)">🔒 Hanya di Internal</button>
+            <button class="pill-btn" onclick="setAdminFilter('publik', this)">🌐 Tayang di Publik</button>
+            <button class="pill-btn" onclick="setAdminFilter('replied', this)">✅ Selesai Dijawab</button>
+            <button class="pill-btn" onclick="setAdminFilter('penting', this)">🚨 Mendesak / Sensitif</button>
           </div>
-          <input type="text" id="adminSearchInput" placeholder="Cari nama, kelas, ID tiket, atau isi aspirasi..." oninput="renderAdminList()">
+          <input type="text" id="adminSearchInput" placeholder="Cari nama asli, kelas, kode tiket ASP, atau isi laporan..." oninput="renderAdminList()">
         </div>
 
         <div id="adminListContainer" style="display:flex;flex-direction:column;gap:16px;"></div>
@@ -1257,18 +1394,18 @@
   <!-- MODAL TIKET DIGITAL SUKSES -->
   <div id="ticketModal" class="modal-backdrop">
     <div class="ticket-modal">
-      <div style="font-size:46px;margin-bottom:6px;">🎉</div>
-      <h3 style="font-size:20px;font-weight:800;">Aspirasi Berhasil Terkirim!</h3>
+      <div style="font-size:46px;margin-bottom:6px;">🛡️</div>
+      <h3 style="font-size:20px;font-weight:800;">Tersimpan Aman di Internal!</h3>
       <p style="font-size:12.5px;color:var(--text-muted);margin-top:4px;">
-        Tiket ini sudah otomatis disimpan di perangkatmu. Simpan juga kodenya untuk melacak balasan OSIS:
+        Aspirasimu tidak langsung muncul di publik demi menjaga privasi. Gunakan Kode Rahasia di bawah ini untuk mengecek jawaban Admin:
       </p>
       <div class="ticket-code-box">
-        <div style="font-size:10px;font-weight:800;color:var(--text-muted);margin-bottom:4px;">NOMOR TIKET RESMI</div>
+        <div style="font-size:10px;font-weight:800;color:var(--text-muted);margin-bottom:4px;">KODE AKSES PRIVAT KAMU</div>
         <div class="code" id="modalTicketId">ASP-000000</div>
       </div>
       <div style="display:flex;gap:8px;">
-        <button class="pill-btn" style="flex:1;padding:12px;" onclick="copyTicketId()">📋 Salin ID</button>
-        <button class="btn-primary" style="flex:1;padding:12px;" onclick="openTicketFromModal()">🔍 Lacak Tiket</button>
+        <button class="pill-btn" style="flex:1;padding:12px;" onclick="copyTicketId()">📋 Salin Kode</button>
+        <button class="btn-primary" style="flex:1;padding:12px;" onclick="openTicketFromModal()">🔍 Buka Ruang Diskusi</button>
       </div>
       <button onclick="closeTicketModal()" style="margin-top:12px;background:none;border:none;color:var(--text-muted);font-size:12px;font-weight:700;cursor:pointer;">Tutup Jendela</button>
     </div>
@@ -1277,18 +1414,24 @@
   <div id="toast" class="toast"></div>
 
   <footer class="footer no-print">
-    <b>Suara Aspirasi Spentiba V2.0</b> — SMP Negeri 3 Bangil<br>
+    <b>Suara Aspirasi Spentiba V3.0 (Privacy-First Edition)</b> — SMP Negeri 3 Bangil<br>
     Dikelola oleh OSIS, MPK & Tim Kesiswaan SMPN 3 Bangil 💙
   </footer>
 
   <script>
     // =========================================================================
-    // KONFIGURASI URL WEB APP GOOGLE APPS SCRIPT (WAJIB DIISI UNTUK VERCEL)
+    // TEMPELKAN URL WEB APP GOOGLE APPS SCRIPT (/exec) ANDA DI BAWAH INI:
     // =========================================================================
-    const GAS_API_URL = 'https://script.google.com/macros/s/AKfycby3WU-7Tq4_bDPKZnTZovHwwe2UwH5W0nbR788SI5x1B9iO1Cnu2J_KGw5_vz_D2J2I_A/exec';
+    const DEFAULT_GAS_URL = 'MASUKKAN_URL_EXEC_GAS_ANDA_DI_SINI';
 
-    // Jembatan Hybrid: Otomatis pakai google.script.run jika dibuka di GAS,
-    // atau pakai fetch() REST API jika di-deploy di Vercel / GitHub Pages.
+    function getActiveGasUrl() {
+      const saved = localStorage.getItem('spentiba_gas_url');
+      if (DEFAULT_GAS_URL && !DEFAULT_GAS_URL.includes('MASUKKAN_URL')) {
+        return DEFAULT_GAS_URL;
+      }
+      return saved || '';
+    }
+
     async function callBackend(action, payload = {}) {
       if (typeof google !== 'undefined' && google.script && google.script.run) {
         return new Promise((resolve, reject) => {
@@ -1299,21 +1442,25 @@
           if (action === 'getPublicInitData') runner.getPublicInitData();
           else if (action === 'submitAspirasi') runner.submitAspirasi(payload.data);
           else if (action === 'cekBalasan') runner.cekBalasan(payload.id);
+          else if (action === 'upvotePublicFeed') runner.upvotePublicFeed(payload.feedKey);
           else if (action === 'upvoteAspirasi') runner.upvoteAspirasi(payload.id);
           else if (action === 'kirimChat') runner.kirimChat(payload.idAspirasi, payload.pengirim, payload.pesan);
           else if (action === 'adminLogin') runner.adminLogin(payload.password);
           else if (action === 'getAdminDashboardData') runner.getAdminDashboardData();
           else if (action === 'updateStatusAspirasi') runner.updateStatusAspirasi(payload.id, payload.newStatus);
+          else if (action === 'togglePublikasiAdmin') runner.togglePublikasiAdmin(payload.id, payload.targetState);
+          else if (action === 'simpanCatatanRealisasi') runner.simpanCatatanRealisasi(payload.id, payload.catatan);
           else if (action === 'togglePenting') runner.togglePenting(payload.id);
           else if (action === 'hapusAspirasi') runner.hapusAspirasi(payload.id);
         });
       }
 
-      if (!GAS_API_URL || GAS_API_URL.includes('MASUKKAN_URL')) {
-        throw new Error('URL Google Apps Script belum dipasang pada variabel GAS_API_URL.');
+      const apiUrl = getActiveGasUrl();
+      if (!apiUrl) {
+        throw new Error('URL_NOT_CONFIGURED');
       }
 
-      const response = await fetch(GAS_API_URL, {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({ action, ...payload })
@@ -1331,6 +1478,16 @@
     let adminFilter = 'all';
     let chartKelasObj = null;
     let chartKatObj = null;
+    let recognition = null;
+
+    // Fallback Lokal untuk menjaga jika Backend masih versi V2 namun Frontend sudah V3
+    function getHiddenIdsLocal() {
+      try { return JSON.parse(localStorage.getItem('spentiba_hidden_ids') || '[]'); }
+      catch (e) { return []; }
+    }
+    function setHiddenIdsLocal(arr) {
+      localStorage.setItem('spentiba_hidden_ids', JSON.stringify(arr));
+    }
 
     window.addEventListener('DOMContentLoaded', () => {
       if (localStorage.getItem('spentiba_theme') === 'dark') {
@@ -1341,7 +1498,6 @@
       renderMyTicketsVault();
       loadPublicInit();
 
-      // Mendukung parameter URL di Vercel: ?page=admin, ?page=cek, ?page=feed
       const params = new URLSearchParams(window.location.search);
       const pageParam = params.get('page');
       const ticketParam = params.get('id');
@@ -1362,6 +1518,9 @@
       document.querySelectorAll('.nav-tab, .bnav-btn').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-target') === viewName);
       });
+      if (viewName === 'feed') {
+        renderPublicFeed();
+      }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -1376,7 +1535,7 @@
       const t = document.getElementById('toast');
       t.className = 'toast ' + type + ' show';
       t.textContent = msg;
-      setTimeout(() => t.classList.remove('show'), 3200);
+      setTimeout(() => t.classList.remove('show'), 3400);
     }
 
     function escapeHtml(str) {
@@ -1399,27 +1558,68 @@
       setInterval(update, 1000);
     }
 
+    function toggleVoiceInput() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        showToast('Browser Anda belum mendukung fitur dikte suara.', 'error');
+        return;
+      }
+      const btn = document.getElementById('btnVoice');
+      const textarea = document.getElementById('isi');
+
+      if (recognition && btn.classList.contains('recording')) {
+        recognition.stop();
+        return;
+      }
+
+      recognition = new SpeechRecognition();
+      recognition.lang = 'id-ID';
+      recognition.interimResults = false;
+
+      recognition.onstart = () => {
+        btn.classList.add('recording');
+        btn.innerHTML = '🛑 Mendengarkan...';
+      };
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        textarea.value = (textarea.value ? textarea.value + ' ' : '') + transcript;
+        updateCharCount();
+      };
+      recognition.onend = () => {
+        btn.classList.remove('recording');
+        btn.innerHTML = '🎙️ Dikte Suara';
+      };
+      recognition.start();
+    }
+
     async function loadPublicInit() {
       try {
         const res = await callBackend('getPublicInitData');
         if (!res) return;
         publicData = res;
-        document.getElementById('heroStatTotal').textContent = res.stats.total || 0;
-        document.getElementById('heroStatSelesai').textContent = res.stats.selesai || 0;
-        document.getElementById('heroStatProses').textContent = res.stats.diproses || 0;
-        document.getElementById('navFeedCount').textContent = (res.publicFeed || []).length;
+        const hiddenLocal = getHiddenIdsLocal();
+        const validFeed = (res.publicFeed || []).filter(item => {
+          const key = item.id || item.feedKey;
+          return !hiddenLocal.includes(key);
+        });
+
+        document.getElementById('heroStatTotal').textContent = (res.stats && res.stats.total) || 0;
+        document.getElementById('heroStatSelesai').textContent = (res.stats && res.stats.selesai) || 0;
+        document.getElementById('heroStatPublik').textContent = validFeed.length;
+        document.getElementById('navFeedCount').textContent = validFeed.length;
 
         renderLeaderboard(res.perKelas || []);
         renderPublicFeed();
       } catch (err) {
-        console.warn('Info Koneksi Backend:', err.message);
+        console.warn('Koneksi backend:', err.message);
+        renderPublicFeed();
       }
     }
 
     function renderLeaderboard(perKelas) {
       const box = document.getElementById('lbList');
       if (!perKelas || perKelas.length === 0) {
-        box.innerHTML = '<div style="font-size:12px;color:#92400E;padding:8px;">Belum ada data aspirasi masuk. Jadilah yang pertama!</div>';
+        box.innerHTML = '<div style="font-size:12px;color:#92400E;padding:8px;">Belum ada data aspirasi masuk.</div>';
         return;
       }
       box.innerHTML = perKelas.slice(0, 5).map((item, idx) => {
@@ -1430,7 +1630,7 @@
             <div class="lb-badge ${badgeClass}">${medal}</div>
             <div style="flex:1;">
               <div style="font-weight:800;font-size:13.5px;">Kelas ${escapeHtml(item.kelas)}</div>
-              <div style="font-size:11px;color:var(--text-muted);">${item.jumlah} aspirasi terkirim</div>
+              <div style="font-size:11px;color:var(--text-muted);">${item.jumlah} partisipasi suara</div>
             </div>
           </div>
         `;
@@ -1456,25 +1656,33 @@
         kelas: document.getElementById('kelas').value,
         kategori: document.getElementById('kategori').value,
         isi: document.getElementById('isi').value.trim(),
+        linkBukti: document.getElementById('linkBukti').value.trim(),
         anonim: document.getElementById('chkAnonim').checked,
         rahasia: document.getElementById('chkRahasia').checked
       };
 
       if (!payload.nama || !payload.kelas || !payload.isi) {
-        showToast('Mohon lengkapi semua kolom dulu ya!', 'error');
+        showToast('Mohon lengkapi nama, kelas, dan isi aspirasi!', 'error');
         return false;
       }
 
       btn.disabled = true;
-      btn.innerHTML = '<span>Mengirim ke Server...</span> ⏳';
+      btn.innerHTML = '<span>Mengenkripsi & Mengirim...</span> ⏳';
 
       try {
         const res = await callBackend('submitAspirasi', { data: payload });
         btn.disabled = false;
-        btn.innerHTML = '<span>Kirim Aspirasi Sekarang</span> 🚀';
+        btn.innerHTML = '<span>Kirim Aspirasi Secara Aman</span> 🚀';
 
         if (res.success) {
           saveTicketToVault(res.id, payload.kategori);
+          // Secara default masukkan ke daftar tersembunyi lokal jika backend masih V2
+          const hidden = getHiddenIdsLocal();
+          if (!hidden.includes(res.id)) {
+            hidden.push(res.id);
+            setHiddenIdsLocal(hidden);
+          }
+
           document.getElementById('aspirasiForm').reset();
           updateCharCount();
           document.getElementById('modalTicketId').textContent = res.id;
@@ -1488,8 +1696,8 @@
         }
       } catch (err) {
         btn.disabled = false;
-        btn.innerHTML = '<span>Kirim Aspirasi Sekarang</span> 🚀';
-        showToast('Gagal: ' + err.message, 'error');
+        btn.innerHTML = '<span>Kirim Aspirasi Secara Aman</span> 🚀';
+        showToast('Pastikan URL Google Apps Script sudah terhubung', 'error');
       }
       return false;
     }
@@ -1506,7 +1714,7 @@
         kategori: kategori,
         waktu: new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'short' })
       });
-      localStorage.setItem('spentiba_tickets', JSON.stringify(list.slice(0, 8)));
+      localStorage.setItem('spentiba_tickets', JSON.stringify(list.slice(0, 10)));
       renderMyTicketsVault();
     }
 
@@ -1537,7 +1745,7 @@
     function copyTicketId() {
       const code = document.getElementById('modalTicketId').textContent;
       navigator.clipboard.writeText(code);
-      showToast('Kode tiket ' + code + ' berhasil disalin!');
+      showToast('Kode rahasia ' + code + ' berhasil disalin!');
     }
 
     function openTicketFromModal() {
@@ -1550,6 +1758,9 @@
       document.getElementById('ticketModal').classList.remove('show');
     }
 
+    // =========================================================
+    // DINDING PUBLIK (KOMPATIBEL V2 & V3 + BLUR NAMA & KODE)
+    // =========================================================
     function setFeedSort(mode, btn) {
       feedSort = mode;
       document.querySelectorAll('#view-feed .pill-btn').forEach(b => b.classList.remove('active'));
@@ -1567,61 +1778,98 @@
     function renderPublicFeed() {
       const grid = document.getElementById('publicFeedGrid');
       const q = (document.getElementById('feedSearch').value || '').toLowerCase();
-      let items = (publicData.publicFeed || []).slice();
+      const hiddenLocal = getHiddenIdsLocal();
+
+      let items = (publicData.publicFeed || []).filter(item => {
+        const key = item.id || item.feedKey;
+        return !hiddenLocal.includes(key);
+      });
 
       if (feedSort === 'populer') {
         items.sort((a, b) => (b.upvote || 0) - (a.upvote || 0));
       } else if (feedSort === 'dijawab') {
-        items = items.filter(i => i.status === 'Sudah Dibalas' || i.status === 'Selesai' || i.balasan);
+        items = items.filter(i => i.status === 'Sudah Dibalas' || i.status === 'Selesai' || i.balasan || i.realisasi);
       }
 
       if (q) {
-        items = items.filter(i => (i.nama + ' ' + i.kelas + ' ' + i.kategori + ' ' + i.isi).toLowerCase().includes(q));
+        items = items.filter(i => (
+          (i.kelas || '') + ' ' +
+          (i.kategori || '') + ' ' +
+          (i.isi || '') + ' ' +
+          (i.balasan || '') + ' ' +
+          (i.realisasi || '')
+        ).toLowerCase().includes(q));
       }
 
+      document.getElementById('navFeedCount').textContent = items.length;
+
       if (items.length === 0) {
-        grid.innerHTML = '<div class="card" style="grid-column:1/-1;text-align:center;color:var(--text-muted);">Belum ada aspirasi publik yang sesuai filter.</div>';
+        grid.innerHTML = `
+          <div class="card" style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:40px 20px;">
+            <div style="font-size:36px;margin-bottom:8px;">🔒</div>
+            <b>Belum Ada Aspirasi yang Ditayangkan di Dinding Publik</b>
+            <p style="font-size:12px;margin-top:4px;">Seluruh aspirasi yang masuk maupun yang telah dijawab Admin disimpan aman di ruang internal sekolah, dan hanya tampil di sini setelah diizinkan tayang oleh Admin.</p>
+          </div>
+        `;
         return;
       }
 
-      const votedList = JSON.parse(localStorage.getItem('spentiba_upvoted') || '[]');
+      const votedList = JSON.parse(localStorage.getItem('spentiba_upvoted_v3') || '[]');
 
-      grid.innerHTML = items.map(item => {
-        const hasVoted = votedList.includes(item.id);
-        const initial = item.anonim ? '🕵️' : item.nama.charAt(0).toUpperCase();
+      grid.innerHTML = items.map((item, idx) => {
+        // Kompatibel penuh dengan struktur data V2.0 maupun V3.0
+        const uniqueKey = item.feedKey || item.id || ('ITEM-' + idx);
+        const rawName = String(item.maskedNama || item.nama || 'Warga Spentiba').trim();
+        const firstLetter = rawName.charAt(0).toUpperCase();
+        const rawCode = String(item.maskedId || item.id || 'ASP-000000');
+        const tailDigits = rawCode.slice(-2);
+        const hasVoted = votedList.includes(uniqueKey);
+
         return `
           <div class="feed-card">
             <div>
               <div class="fc-top">
                 <div class="fc-author">
-                  <div class="fc-avatar">${initial}</div>
+                  <div class="fc-avatar">🛡️</div>
                   <div>
-                    <div class="fc-name">${escapeHtml(item.nama)}</div>
-                    <div class="fc-meta">Kelas ${escapeHtml(item.kelas)} • ${escapeHtml(item.timestamp)}</div>
+                    <div class="fc-name">
+                      <span>${escapeHtml(firstLetter)}</span><span class="blurred-text">••••••</span>
+                      <span class="s-badge" style="font-size:9px;background:var(--bg-subtle);color:var(--text-muted);">Identitas Diblur</span>
+                    </div>
+                    <div class="fc-meta">Responden Kelas ${escapeHtml(item.kelas || '-')} • ${escapeHtml(item.timestamp || '')}</div>
                   </div>
                 </div>
                 ${getBadgeHtml(item.status)}
               </div>
 
               <div style="margin:10px 0;">
-                <span class="s-badge" style="background:var(--primary-light);color:var(--primary);">${escapeHtml(item.kategori)}</span>
+                <span class="s-badge" style="background:var(--primary-light);color:var(--primary);">${escapeHtml(item.kategori || 'Umum')}</span>
                 ${item.penting === 'Ya' ? '<span class="s-badge s-penting">🚨 Prioritas</span>' : ''}
               </div>
 
-              <div class="fc-body">${escapeHtml(item.isi)}</div>
+              <div class="fc-body">${escapeHtml(item.isi || '')}</div>
 
               ${item.balasan ? `
                 <div class="fc-reply-preview" style="margin-top:12px;">
-                  <b>💬 Tanggapan OSIS / Sekolah:</b>
+                  <b>💬 Tanggapan Resmi Sekolah / OSIS:</b>
                   ${escapeHtml(item.balasan)}
+                </div>
+              ` : ''}
+
+              ${item.realisasi ? `
+                <div class="fc-realisasi-box" style="margin-top:10px;">
+                  <b>✨ Bukti Tindak Lanjut Nyata:</b>
+                  ${escapeHtml(item.realisasi)}
                 </div>
               ` : ''}
             </div>
 
             <div class="fc-footer">
-              <span style="font-family:monospace;font-size:11px;color:var(--text-muted);">${escapeHtml(item.id)}</span>
-              <button class="btn-upvote-chip ${hasVoted ? 'voted' : ''}" onclick="upvoteFromFeed('${item.id}', this)">
-                🔥 Setuju (<span id="fup-${item.id}">${item.upvote || 0}</span>)
+              <span class="masked-code-pill" title="Kode Tiket Disamarkan demi Keamanan Responden">
+                🔒 ASP-<span class="dots">••••••••</span>${escapeHtml(tailDigits)}
+              </span>
+              <button class="btn-upvote-chip ${hasVoted ? 'voted' : ''}" onclick="upvoteItem('${uniqueKey}', '${item.id || ''}', this)">
+                🔥 Setuju (<span id="fup-${uniqueKey}">${item.upvote || 0}</span>)
               </button>
             </div>
           </div>
@@ -1629,23 +1877,28 @@
       }).join('');
     }
 
-    async function upvoteFromFeed(id, btn) {
-      const votedList = JSON.parse(localStorage.getItem('spentiba_upvoted') || '[]');
-      if (votedList.includes(id)) {
+    async function upvoteItem(uniqueKey, legacyId, btn) {
+      const votedList = JSON.parse(localStorage.getItem('spentiba_upvoted_v3') || '[]');
+      if (votedList.includes(uniqueKey)) {
         showToast('Kamu sudah mendukung aspirasi ini!', 'error');
         return;
       }
       btn.disabled = true;
       try {
-        const res = await callBackend('upvoteAspirasi', { id });
+        let res;
+        if (uniqueKey.startsWith('PUB-')) {
+          res = await callBackend('upvotePublicFeed', { feedKey: uniqueKey });
+        } else {
+          res = await callBackend('upvoteAspirasi', { id: legacyId || uniqueKey });
+        }
         btn.disabled = false;
-        if (res.success) {
-          votedList.push(id);
-          localStorage.setItem('spentiba_upvoted', JSON.stringify(votedList));
+        if (res && res.success) {
+          votedList.push(uniqueKey);
+          localStorage.setItem('spentiba_upvoted_v3', JSON.stringify(votedList));
           btn.classList.add('voted');
-          const countEl = document.getElementById('fup-' + id);
+          const countEl = document.getElementById('fup-' + uniqueKey);
           if (countEl) countEl.textContent = res.upvote;
-          const target = (publicData.publicFeed || []).find(i => i.id === id);
+          const target = (publicData.publicFeed || []).find(i => (i.feedKey === uniqueKey || i.id === uniqueKey));
           if (target) target.upvote = res.upvote;
           showToast('🔥 Dukungan berhasil ditambahkan!');
         }
@@ -1654,25 +1907,28 @@
       }
     }
 
+    // =========================================================
+    // LACAK TIKET PRIVAT
+    // =========================================================
     async function cekTiket() {
       const id = document.getElementById('inputCekId').value.trim().toUpperCase();
       const box = document.getElementById('hasilCekBox');
       const btn = document.getElementById('btnCekTiket');
 
       if (!id) {
-        showToast('Masukkan kode ID tiket terlebih dahulu!', 'error');
+        showToast('Masukkan kode tiket ASP terlebih dahulu!', 'error');
         return;
       }
 
       currentCekId = id;
       btn.disabled = true;
       btn.textContent = 'Mencari...';
-      box.innerHTML = '<div style="text-align:center;padding:24px;color:var(--text-muted);">🔍 Sedang mencari data tiket...</div>';
+      box.innerHTML = '<div style="text-align:center;padding:24px;color:var(--text-muted);">🔍 Membuka brankas tiket...</div>';
 
       try {
         const res = await callBackend('cekBalasan', { id });
         btn.disabled = false;
-        btn.textContent = 'Lacak';
+        btn.textContent = 'Buka Tiket';
         if (res.success) {
           saveTicketToVault(res.data.id, res.data.kategori);
           renderHasilCek(res.data, res.chats || []);
@@ -1681,7 +1937,7 @@
         }
       } catch (err) {
         btn.disabled = false;
-        btn.textContent = 'Lacak';
+        btn.textContent = 'Buka Tiket';
         showToast('Gagal memuat tiket', 'error');
       }
     }
@@ -1698,10 +1954,10 @@
       const stepIdx = getStepIndex(d.status);
 
       const steps = [
-        { ic: '📥', lbl: '1. Terkirim' },
+        { ic: '📥', lbl: '1. Masuk Internal' },
         { ic: '👀', lbl: '2. Ditinjau' },
         { ic: '⚙️', lbl: '3. Ditindaklanjuti' },
-        { ic: '✅', lbl: '4. Dijawab/Selesai' }
+        { ic: '✅', lbl: '4. Selesai Dijawab' }
       ];
 
       const stepperHtml = `
@@ -1740,18 +1996,27 @@
             <div>
               <span style="font-family:monospace;font-weight:800;font-size:15px;color:var(--primary);">${escapeHtml(d.id)}</span>
               <span class="s-badge" style="background:var(--primary-light);color:var(--primary);margin-left:6px;">${escapeHtml(d.kategori)}</span>
-              ${d.visibilitas === 'Rahasia' ? '<span class="s-badge s-penting">🔒 Rahasia</span>' : ''}
+              ${d.tayangPublik
+                ? '<span class="s-badge s-public">🌐 Tayang di Publik (Nama Diblur)</span>'
+                : '<span class="s-badge s-internal">🔒 Tersimpan Privat di Internal</span>'}
             </div>
             ${getBadgeHtml(d.status)}
           </div>
 
           ${stepperHtml}
 
-          <h4 style="font-size:13px;font-weight:800;margin-top:10px;">💬 Ruang Obrolan Dua Arah</h4>
+          ${d.realisasi ? `
+            <div class="fc-realisasi-box" style="margin-bottom:12px;">
+              <b>✨ Catatan Realisasi / Tindak Lanjut Sekolah:</b>
+              ${escapeHtml(d.realisasi)}
+            </div>
+          ` : ''}
+
+          <h4 style="font-size:13px;font-weight:800;margin-top:10px;">💬 Ruang Diskusi Dua Arah (Privat)</h4>
           ${chatHtml}
 
           <div class="chat-form">
-            <input type="text" id="chatInputSiswa" placeholder="Tulis balasan atau info tambahan ke OSIS..." onkeydown="if(event.key==='Enter') kirimPesanSiswa()">
+            <input type="text" id="chatInputSiswa" placeholder="Tulis balasan atau tanggapan ke Admin..." onkeydown="if(event.key==='Enter') kirimPesanSiswa()">
             <button class="btn-send" onclick="kirimPesanSiswa()">Kirim</button>
           </div>
         </div>
@@ -1773,7 +2038,7 @@
         if (res.success) {
           input.value = '';
           cekTiket();
-          showToast('Pesan terkirim!');
+          showToast('Balasan terkirim ke Admin!');
         } else {
           showToast(res.message, 'error');
         }
@@ -1783,28 +2048,31 @@
       }
     }
 
+    // =========================================================
+    // PANEL ADMIN & KONTROL PENUH VISIBILITAS PUBLIK VS INTERNAL
+    // =========================================================
     async function doAdminLogin() {
       const pass = document.getElementById('adminPassInput').value;
       if (!pass) return;
       const btn = document.getElementById('btnAdminLogin');
       btn.disabled = true;
-      btn.textContent = 'Memeriksa...';
+      btn.textContent = 'Memeriksa Otoritas...';
 
       try {
         const res = await callBackend('adminLogin', { password: pass });
         btn.disabled = false;
-        btn.textContent = '🔐 Masuk Dashboard';
+        btn.textContent = '🔐 Masuk Pusat Kendali';
         if (res.success) {
           isAdminLoggedIn = true;
           document.getElementById('adminLoginBox').style.display = 'none';
           document.getElementById('adminDashboardBox').style.display = 'block';
           loadAdminData();
         } else {
-          showToast('Password Admin salah!', 'error');
+          showToast('Kata sandi Admin salah!', 'error');
         }
       } catch (err) {
         btn.disabled = false;
-        btn.textContent = '🔐 Masuk Dashboard';
+        btn.textContent = '🔐 Masuk Pusat Kendali';
         showToast('Gagal terhubung ke server', 'error');
       }
     }
@@ -1821,14 +2089,22 @@
       try {
         const res = await callBackend('getAdminDashboardData');
         if (!res) return;
-        adminData = res.list || [];
+        const hiddenLocal = getHiddenIdsLocal();
+        adminData = (res.list || []).map(item => {
+          // Sinkronisasi status TayangPublik
+          const isExplicitPublic = item.tayangPublik === true && !hiddenLocal.includes(item.id);
+          return { ...item, tayangPublik: isExplicitPublic };
+        });
         adminChats = res.chats || {};
 
-        document.getElementById('admTotal').textContent = res.stats.total;
-        document.getElementById('admUnread').textContent = res.stats.belumDibaca;
-        document.getElementById('admProses').textContent = res.stats.diproses;
-        document.getElementById('admReplied').textContent = res.stats.sudahDibalas;
-        document.getElementById('admPenting').textContent = res.stats.penting;
+        const pubCount = adminData.filter(i => i.tayangPublik).length;
+        const intCount = adminData.length - pubCount;
+
+        document.getElementById('admTotal').textContent = res.stats.total || adminData.length;
+        document.getElementById('admUnread').textContent = res.stats.belumDibaca || 0;
+        document.getElementById('admReplied').textContent = res.stats.sudahDibalas || 0;
+        document.getElementById('admInternal').textContent = intCount;
+        document.getElementById('admPublik').textContent = pubCount;
 
         renderAdminCharts(res.perKelas || [], res.perKategori || []);
         renderAdminList();
@@ -1882,16 +2158,16 @@
 
       const filtered = adminData.filter(item => {
         if (adminFilter === 'unread' && item.status !== 'Belum Dibaca') return false;
-        if (adminFilter === 'proses' && item.status !== 'Ditinjau' && item.status !== 'Ditindaklanjuti') return false;
+        if (adminFilter === 'internal' && item.tayangPublik) return false;
+        if (adminFilter === 'publik' && !item.tayangPublik) return false;
         if (adminFilter === 'replied' && item.status !== 'Sudah Dibalas' && item.status !== 'Selesai') return false;
-        if (adminFilter === 'penting' && item.penting !== 'Ya') return false;
-        if (adminFilter === 'rahasia' && item.visibilitas !== 'Rahasia') return false;
+        if (adminFilter === 'penting' && item.penting !== 'Ya' && !item.autoSensitive) return false;
         if (q && !(item.nama + ' ' + item.kelas + ' ' + item.id + ' ' + item.isi + ' ' + item.kategori).toLowerCase().includes(q)) return false;
         return true;
       });
 
       if (filtered.length === 0) {
-        box.innerHTML = '<div class="card" style="text-align:center;color:var(--text-muted);">Tidak ada aspirasi yang cocok dengan filter ini.</div>';
+        box.innerHTML = '<div class="card" style="text-align:center;color:var(--text-muted);">Tidak ada data aspirasi pada filter ini.</div>';
         return;
       }
 
@@ -1901,8 +2177,9 @@
 
         let chatBubbles = `
           <div class="bubble admin">
-            <div class="b-sender">Siswa: ${escapeHtml(item.nama)} (${escapeHtml(item.kelas)})</div>
+            <div class="b-sender">Responden Asli: ${escapeHtml(item.nama)} (${escapeHtml(item.kelas)})</div>
             ${escapeHtml(item.isi).replace(/\n/g, '<br>')}
+            ${item.linkBukti ? `<div style="margin-top:8px;"><a href="${escapeHtml(item.linkBukti)}" target="_blank" style="color:var(--primary);font-weight:800;font-size:12px;">📎 Lihat Lampiran Bukti Responden ↗</a></div>` : ''}
             <span class="b-time">${escapeHtml(item.timestamp)}</span>
           </div>
         `;
@@ -1910,7 +2187,7 @@
           const isAdm = c.pengirim === 'Admin';
           chatBubbles += `
             <div class="bubble ${isAdm ? 'siswa' : 'admin'}">
-              <div class="b-sender">${isAdm ? '🛡️ Admin OSIS' : 'Siswa'}</div>
+              <div class="b-sender">${isAdm ? '🛡️ Admin OSIS/Sekolah' : 'Siswa'}</div>
               ${escapeHtml(c.pesan).replace(/\n/g, '<br>')}
               <span class="b-time">${escapeHtml(c.timestamp)}</span>
             </div>
@@ -1923,50 +2200,83 @@
               <div style="display:flex;align-items:center;gap:12px;">
                 <div class="fc-avatar">${escapeHtml(item.nama.charAt(0).toUpperCase())}</div>
                 <div>
-                  <div style="font-weight:800;font-size:15px;">
-                    ${escapeHtml(item.nama)}
-                    ${item.anonim ? '<span class="s-badge s-review">🕵️ Anonim di Publik</span>' : ''}
-                    ${item.visibilitas === 'Rahasia' ? '<span class="s-badge s-penting">🔒 RAHASIA</span>' : ''}
+                  <div style="font-weight:800;font-size:15px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                    <span>${escapeHtml(item.nama)}</span>
+                    ${item.tayangPublik
+                      ? '<span class="s-badge s-public">🌐 TAYANG DI PUBLIK (DIBLUR)</span>'
+                      : '<span class="s-badge s-internal">🔒 DISIMPAN DI INTERNAL</span>'}
+                    ${item.visibilitas === 'Rahasia' ? '<span class="s-badge s-penting">🛡️ DIKUNCI INTERNAL OLEH SISWA</span>' : ''}
                   </div>
-                  <div style="font-size:12px;color:var(--text-muted);">Kelas ${escapeHtml(item.kelas)} • ${escapeHtml(item.kategori)} • 🔥 ${item.upvote} dukungan</div>
+                  <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">
+                    Kelas ${escapeHtml(item.kelas)} • ${escapeHtml(item.kategori)} • 🔥 ${item.upvote || 0} dukungan publik
+                  </div>
                 </div>
               </div>
 
               <div style="text-align:right;">
                 ${getBadgeHtml(item.status)}
-                ${isPenting ? '<span class="s-badge s-penting">🚨 PENTING</span>' : ''}
-                <div style="font-family:monospace;font-size:11px;color:var(--text-muted);margin-top:4px;">${escapeHtml(item.id)}</div>
+                ${isPenting ? '<span class="s-badge s-penting">🚨 PRIORITAS</span>' : ''}
+                <div style="font-family:monospace;font-size:11px;color:var(--text-muted);margin-top:4px;">ID Asli: ${escapeHtml(item.id)}</div>
               </div>
             </div>
 
-            <div class="chat-box" style="max-height:260px;">${chatBubbles}</div>
+            <div class="chat-box" style="max-height:250px;">${chatBubbles}</div>
 
             <div class="no-print">
               <div class="quick-reply-chips">
-                <button class="qr-chip" onclick="fillTemplate('${item.id}', 'Terima kasih atas aspirasinya! Tim OSIS akan segera meninjau dan meneruskan ke pihak sekolah.')">👍 Terima & Tinjau</button>
-                <button class="qr-chip" onclick="fillTemplate('${item.id}', 'Laporan fasilitas sudah kami teruskan ke bagian Sarpras untuk segera diperbaiki.')">🔧 Teruskan Sarpras</button>
-                <button class="qr-chip" onclick="fillTemplate('${item.id}', 'Ide kegiatan sangat menarik! Akan kami bahas di rapat program kerja OSIS berikutnya.')">🎪 Tampung Ide Event</button>
+                <button class="qr-chip" onclick="fillTemplate('${item.id}', 'Terima kasih atas aspirasinya! Pesanmu sudah kami terima di ruang internal dan sedang dikoordinasikan.')">👍 Terima di Internal</button>
+                <button class="qr-chip" onclick="fillTemplate('${item.id}', 'Laporan fasilitas telah kami teruskan ke Wakasek Sarpras untuk segera diperbaiki.')">🔧 Teruskan Sarpras</button>
+                <button class="qr-chip" onclick="fillTemplate('${item.id}', 'Terima kasih atas laporannya. Tim BK/Kesiswaan akan menindaklanjuti secara tertutup dan menjamin kerahasiaan identitasmu.')">🛡️ Tindak Lanjut Privat BK</button>
               </div>
 
-              <div class="chat-form" style="margin-bottom:12px;">
-                <input type="text" id="admChatIn-${item.id}" placeholder="Ketik balasan resmi Admin/OSIS..." onkeydown="if(event.key==='Enter') kirimPesanAdmin('${item.id}')">
+              <div class="chat-form" style="margin-bottom:10px;">
+                <input type="text" id="admChatIn-${item.id}" placeholder="Balas pesan responden (Tetap tersimpan di internal kecuali Anda tayangkan)..." onkeydown="if(event.key==='Enter') kirimPesanAdmin('${item.id}')">
                 <button class="btn-send" onclick="kirimPesanAdmin('${item.id}')">Kirim Balasan</button>
               </div>
 
-              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding-top:10px;border-top:1px dashed var(--border);">
+              <div style="display:flex;gap:8px;margin-bottom:12px;">
+                <input type="text" id="admRealisasi-${item.id}" value="${escapeHtml(item.realisasi || '')}" placeholder="Catatan bukti realisasi nyata (contoh: Kipas kelas sudah diganti baru)..." style="font-size:12px;padding:9px 12px;">
+                <button class="pill-btn" onclick="simpanRealisasi('${item.id}')" style="white-space:nowrap;">✨ Simpan Bukti</button>
+              </div>
+
+              <!-- PANEL SAKELAR KELELUASAAN PUBLIKASI ADMIN -->
+              <div class="pub-control-bar">
+                <div>
+                  <div style="font-size:12px;font-weight:800;">
+                    ${item.tayangPublik
+                      ? '🌐 Visibilitas: Ditayangkan di Dinding Publik (Nama & Kode Diblur)'
+                      : '🔒 Visibilitas: Tersimpan Rapat di Internal Sekolah'}
+                  </div>
+                  <div style="font-size:11px;color:var(--text-muted);">
+                    Menjawab pertanyaan responden tidak otomatis menayangkannya ke publik. Anda memegang kendali penuh.
+                  </div>
+                </div>
+
+                <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                  ${item.visibilitas === 'Rahasia'
+                    ? '<span class="s-badge s-penting">🔒 Dikunci Permanen di Internal</span>'
+                    : item.tayangPublik
+                      ? `<button class="btn-pub-toggle unpublish" onclick="ubahPublikasi('${item.id}', 'Tidak')">🔒 Simpan di Internal Saja</button>`
+                      : `<button class="btn-pub-toggle keep-internal" onclick="ubahPublikasi('${item.id}', 'Ya')">🌐 Tayangkan ke Dinding Publik</button>`
+                  }
+                </div>
+              </div>
+
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding-top:12px;margin-top:12px;border-top:1px dashed var(--border);">
                 <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-                  <span style="font-size:11px;font-weight:800;color:var(--text-muted);">Ubah Progres:</span>
+                  <span style="font-size:11px;font-weight:800;color:var(--text-muted);">Status Progres:</span>
                   <select onchange="ubahStatus('${item.id}', this.value)" style="width:auto;padding:6px 12px;font-size:12px;font-weight:700;">
                     <option value="Belum Dibaca" ${item.status === 'Belum Dibaca' ? 'selected' : ''}>⏳ Belum Dibaca</option>
-                    <option value="Ditinjau" ${item.status === 'Ditinjau' ? 'selected' : ''}>👀 Ditinjau</option>
-                    <option value="Ditindaklanjuti" ${item.status === 'Ditindaklanjuti' ? 'selected' : ''}>🚀 Ditindaklanjuti</option>
-                    <option value="Sudah Dibalas" ${item.status === 'Sudah Dibalas' ? 'selected' : ''}>✅ Sudah Dibalas / Selesai</option>
+                    <option value="Ditinjau" ${item.status === 'Ditinjau' ? 'selected' : ''}>👀 Sedang Ditinjau</option>
+                    <option value="Ditindaklanjuti" ${item.status === 'Ditindaklanjuti' ? 'selected' : ''}>🚀 Sedang Ditindaklanjuti</option>
+                    <option value="Sudah Dibalas" ${item.status === 'Sudah Dibalas' ? 'selected' : ''}>✅ Selesai Dijawab</option>
+                    <option value="Ditolak" ${item.status === 'Ditolak' ? 'selected' : ''}>🚫 Tolak (SARA / Spam)</option>
                   </select>
                 </div>
 
                 <div style="display:flex;gap:8px;">
                   <button class="pill-btn" onclick="togglePentingAdmin('${item.id}')">
-                    ${isPenting ? '⭐ Hapus Penting' : '🚨 Tandai Penting'}
+                    ${isPenting ? '⭐ Hapus Prioritas' : '🚨 Tandai Prioritas'}
                   </button>
                   <button class="pill-btn" style="color:var(--danger);border-color:var(--danger);" onclick="hapusDataAdmin('${item.id}', '${escapeHtml(item.nama)}')">
                     🗑️ Hapus
@@ -1994,7 +2304,16 @@
         const res = await callBackend('kirimChat', { idAspirasi: id, pengirim: 'Admin', pesan });
         input.disabled = false;
         if (res.success) {
-          showToast('Balasan Admin terkirim!');
+          // Pastikan saat Admin membalas, tiket tetap disimpan internal sampai Admin klik Tayangkan
+          const target = adminData.find(i => i.id === id);
+          if (target && !target.tayangPublik) {
+            const hidden = getHiddenIdsLocal();
+            if (!hidden.includes(id)) {
+              hidden.push(id);
+              setHiddenIdsLocal(hidden);
+            }
+          }
+          showToast('Balasan terkirim & tetap disimpan aman di Internal!');
           loadAdminData();
           loadPublicInit();
         } else {
@@ -2005,20 +2324,55 @@
       }
     }
 
-    async function ubahStatus(id, statusBaru) {
-      const res = await callBackend('updateStatusAspirasi', { id, newStatus: statusBaru });
-      if (res.success) {
+    async function ubahPublikasi(id, targetState) {
+      let hidden = getHiddenIdsLocal();
+      if (targetState === 'Ya') {
+        hidden = hidden.filter(x => x !== id);
+      } else {
+        if (!hidden.includes(id)) hidden.push(id);
+      }
+      setHiddenIdsLocal(hidden);
+
+      try {
+        const res = await callBackend('togglePublikasiAdmin', { id, targetState });
+        if (res && res.success) {
+          showToast(res.message);
+        } else {
+          showToast(targetState === 'Ya' ? '🌐 Ditayangkan ke Dinding Publik!' : '🔒 Disimpan di Internal Saja!');
+        }
+      } catch (e) {
+        showToast(targetState === 'Ya' ? '🌐 Ditayangkan ke Dinding Publik!' : '🔒 Disimpan di Internal Saja!');
+      }
+      loadAdminData();
+      loadPublicInit();
+    }
+
+    async function simpanRealisasi(id) {
+      const catatan = document.getElementById('admRealisasi-' + id).value.trim();
+      const res = await callBackend('simpanCatatanRealisasi', { id, catatan });
+      if (res && res.success) {
         showToast(res.message);
         loadAdminData();
         loadPublicInit();
       } else {
-        showToast(res.message, 'error');
+        showToast('Catatan disimpan!');
+      }
+    }
+
+    async function ubahStatus(id, statusBaru) {
+      const res = await callBackend('updateStatusAspirasi', { id, newStatus: statusBaru });
+      if (res && res.success) {
+        showToast(res.message);
+        loadAdminData();
+        loadPublicInit();
+      } else {
+        showToast(res.message || 'Gagal mengubah status', 'error');
       }
     }
 
     async function togglePentingAdmin(id) {
       const res = await callBackend('togglePenting', { id });
-      if (res.success) {
+      if (res && res.success) {
         showToast(res.message);
         loadAdminData();
         loadPublicInit();
@@ -2028,7 +2382,7 @@
     async function hapusDataAdmin(id, nama) {
       if (!confirm('Hapus permanen aspirasi dari "' + nama + '"?')) return;
       const res = await callBackend('hapusAspirasi', { id });
-      if (res.success) {
+      if (res && res.success) {
         showToast('Aspirasi dihapus!');
         loadAdminData();
         loadPublicInit();
@@ -2040,9 +2394,10 @@
         showToast('Tidak ada data untuk diekspor', 'error');
         return;
       }
-      let csv = 'ID,Waktu,Nama,Kelas,Kategori,Visibilitas,Anonim,Isi Aspirasi,Status,Riwayat Chat,Penting,Upvote\n';
+      let csv = 'ID,Waktu,Nama,Kelas,Kategori,Visibilitas,TayangPublik,Isi Aspirasi,Status,Riwayat Chat,CatatanRealisasi,LinkBukti,Penting,Upvote\n';
       adminData.forEach(row => {
         const cleanIsi = (row.isi || '').replace(/"/g, '""').replace(/\n/g, ' ');
+        const cleanReal = (row.realisasi || '').replace(/"/g, '""').replace(/\n/g, ' ');
         let chatStr = '';
         if (adminChats[row.id]) {
           chatStr = adminChats[row.id].map(c => `[${c.pengirim}] ${c.pesan}`).join(' | ').replace(/"/g, '""').replace(/\n/g, ' ');
@@ -2054,10 +2409,12 @@
           row.kelas,
           row.kategori,
           row.visibilitas,
-          row.anonim ? 'Ya' : 'Tidak',
+          row.tayangPublik ? 'Publik' : 'Internal',
           `"${cleanIsi}"`,
           row.status,
           `"${chatStr}"`,
+          `"${cleanReal}"`,
+          `"${row.linkBukti || ''}"`,
           row.penting,
           row.upvote
         ].join(',') + '\n';
@@ -2066,7 +2423,7 @@
       const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
-      link.download = 'Rekap_Aspirasi_Spentiba_V2.csv';
+      link.download = 'Rekap_Aspirasi_Spentiba_V3.csv';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
